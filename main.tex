@@ -1,0 +1,122 @@
+\documentclass{etsit-report}
+\usepackage[utf8]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Metadata
+%
+\title{Development of a fast image alignment algorithm for Cryo-EM}
+\degree{Máster Universitario en Ingeniería de Telecomunicación}
+\thesistype{Trabajo de Fin de Máster}
+\author{Oier Lauzirika Zarrabeitia}
+\director{Carlos Óscar Sorzano Sánchez \\ Narciso García Santos}
+\department{Departamento de Señales, Sistemas y Radiocomunicaciones}
+\date{June 2022}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Paths
+%
+
+% Figure
+\graphicspath{{figures/}}
+
+% References
+\addbibresource{references.bib}
+
+% Acronyms
+\makeglossaries
+\loadglsentries{acronyms}
+
+\usepackage{subfiles} % Best loaded last in the preamble
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Document
+%
+\begin{document}
+\frontmatter
+
+% Frontpage
+\cleardoublepage
+\makefrontpage
+
+% Information page
+\cleardoublepage
+\makeinfopage
+
+% Title
+\cleardoublepage
+\maketitle
+
+% Resumen and abstract
+\begin{otherlanguage}{spanish}
+\begin{abstract}
+    \subfile{chapters/Resumen}
+\end{abstract}
+\textit{\textbf{Palabras clave:}}
+CryoEM, SPA, Tratamiento Digital de Imágenes
+\end{otherlanguage}
+
+\begin{abstract}
+    \subfile{chapters/Abstract}
+\end{abstract}
+\textit{\textbf{Keywords: }}
+CryoEM, SPA, Digital Image Processing
+
+% ToC, ToF, ToT
+\newpage
+\tableofcontents
+\listoffigures
+\listoftables
+\lstlistoflistings
+
+% Glossary
+\printglossary[type=\acronymtype]
+
+\mainmatter
+
+% Chapters
+\chapter{Introduction}
+\label{chap:introduction}
+\subfile{chapters/1-Introduction}
+
+\chapter{Objectives}
+\label{chap:objetives}
+\subfile{chapters/2-Objectives}
+
+\chapter{State of the art}
+\label{chap:state_of_the_art}
+\subfile{chapters/3-State of the art}
+
+\chapter{Implementation}
+\label{chap:implementation}
+\subfile{chapters/4-Implementation}
+
+\chapter{Results}
+\label{chap:results}
+\subfile{chapters/5-Results}
+
+\chapter{Conclusions}
+\label{chap:conclusions}
+\subfile{chapters/6-Conclusions}
+
+\chapter{Future work}
+\label{chap:future}
+\subfile{chapters/7-Future work}
+
+\printbibliography
+
+\appendix
+\chapter{Social, economic, environmental, ethical and professional impacts}
+\subfile{appendices/A-Social, economic, environmental, ethical and professional impacts}
+
+\chapter{Economic budget}
+\label{app:budget}
+
+\chapter{Single Particle Analysis}
+\label{app:spa}
+\begin{refsection}
+\subfile{appendices/C-Single Particle Analysis}
+\newpage
+\printbibliography[heading=subbibliography]
+\end{refsection}
+
+\end{document}

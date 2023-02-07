@@ -1,0 +1,15 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+\Gls{spa} has significantly increased its popularity in the last decades. As a consequence, several image processing packages have arised. All of them chase similar ambitions: Obtain accurate high resolution maps in the least amount of time possible. Most of the state-of-the-art \gls{cryoem} image processing packages have converged into the same image processing pipeline. This pipeline follows a conventional structure, although it is somewhat malleable. The difference between packages lies on the algorithmic approach they use to accomplish individual tasks of the pipeline. Usually, each package is only proficient in a handful of steps. In fact, some packages do not implement the whole pipeline and rely on others to be able to process from beginning to end.
+
+Traditional software packages in the context of \gls{spa} are Cistem\cite{grigorieff2018}, Relion\cite{scheres2021} and Xmipp\cite{sorzano2004}. The later one is developed at the \gls{bcu} group at the \gls{cnb}-\gls{csic}. In 2016 the introduction of Cryosparc\cite{cryosparc} was disruptive due to its significant performance improvements. Closely related to this, the \gls{bcu} also develops Scipion\cite{delarosa2016}, a platform which enables end users to easily interoperate between image processing packages.
+
+\subsection{Xmipp}
+A
+
+\subsection{Scipion}
+As mentioned earlier, Scipion does not implement any image processing algorithms. Instead, it provides a common scaffolding to integrate image processing packages. This enables end users to easily build \gls{spa} image processing workflows using the strengths from each package. Moreover, it provides methods to consensuate the outputs of multiple programs, further increasing the quality of the results. In fact, the benefits of Scipion have been extended to other domains such as Drug Screening\cite{scipion_chem} or \gls{cryoet}\cite{jimenezdelamorena2021}.
+
+\end{document}
