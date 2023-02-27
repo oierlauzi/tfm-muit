@@ -293,8 +293,43 @@
     abstract = {X-windows based microscopy image processing package (Xmipp) is a specialized suit of image processing programs, primarily aimed at obtaining the 3D reconstruction of biological specimens from large sets of projection images acquired by transmission electron microscopy. This public-domain software package was introduced to the electron microscopy field eight years ago, and since then it has changed drastically. New methodologies for the analysis of single-particle projection images have been added to classification, contrast transfer function correction, angular assignment, 3D reconstruction, reconstruction of crystals, etc. In addition, the package has been extended with functionalities for 2D crystal and electron tomography data. Furthermore, its current implementation in C++, with a highly modular design of well-documented data structures and functions, offers a convenient environment for the development of novel algorithms. In this paper, we present a general overview of a new generation of Xmipp that has been re-engineered to maximize flexibility and modularity, potentially facilitating its integration in future standardization efforts in the field. Moreover, by focusing on those developments that distinguish Xmipp from other packages available, we illustrate its added value to the electron microscopy community.}
 }
 
+@article{shaikh2008,
+    author = {Shaikh, Tanvir and Gao, Haixiao and Baxter, William and Asturias, Francisco and Boisset, Nicolas and Leith, Ardean and Frank, Joachim},
+    year = {2008},
+    month = {02},
+    pages = {1941-74},
+    title = {SPIDER image processing for single-particle reconstruction of biological macromolecules from electron micrographs},
+    volume = {3},
+    journal = {Nature protocols},
+    doi = {10.1038/nprot.2008.156}
+}
 
-@Article{sorzano2021,
+@article{ludke2000,
+    author = {Ludtke, Steven and Baldwin, Philip and Chiu, Wah},
+    year = {2000},
+    month = {01},
+    pages = {82-97},
+    title = {EMAN: Semiautomated Software for High-Resolution Single-Particle Reconstructions},
+    volume = {128},
+    journal = {Journal of structural biology},
+    doi = {10.1006/jsbi.1999.4174}
+}
+
+@article{strelak2021,
+    AUTHOR = {Střelák, David and Filipovič, Jiří and Jiménez-Moreno, Amaya and Carazo, Jose María and Sánchez Sorzano, Carlos Óscar},
+    TITLE = {FlexAlign: An Accurate and Fast Algorithm for Movie Alignment in Cryo-Electron Microscopy},
+    JOURNAL = {Electronics},
+    VOLUME = {9},
+    YEAR = {2020},
+    NUMBER = {6},
+    ARTICLE-NUMBER = {1040},
+    URL = {https://www.mdpi.com/2079-9292/9/6/1040},
+    ISSN = {2079-9292},
+    ABSTRACT = {Cryogenic Electron Microscopy (Cryo-EM) has been established as one of the key players in Structural Biology. It can reconstruct a 3D model of the sample at the near-atomic resolution, which led to a Method of the year award by Nature, and the Nobel Prize in 2017. With the growing number of facilities, faster microscopes, and new imaging techniques, new algorithms are needed to process the so-called movies data produced by the microscopes in real-time, while preserving a high resolution and maximum of additional information. In this article, we present a new algorithm used for movie alignment, called FlexAlign. FlexAlign is able to correctly compensate for the shift produced during the movie acquisition on-the-fly, using the current generation of hardware. The algorithm performs a global and elastic local registration of the movie frames using Cross-Correlation and B-spline interpolation for high precision. We show that our execution time is compatible with real-time correction and that we preserve the high-resolution information up to high frequency.},
+    DOI = {10.3390/electronics9061040}
+}
+
+@article{sorzano2021,
     AUTHOR = {Strelak, David and Jiménez-Moreno, Amaya and Vilas, José L. and Ramírez-Aportela, Erney and Sánchez-García, Ruben and Maluenda, David and Vargas, Javier and Herreros, David and Fernández-Giménez, Estrella and de Isidro-Gómez, Federico P. and Horacek, Jan and Myska, David and Horacek, Martin and Conesa, Pablo and Fonseca-Reyna, Yunior C. and Jiménez, Jorge and Martínez, Marta and Harastani, Mohamad and Jonić, Slavica and Filipovic, Jiri and Marabini, Roberto and Carazo, José M. and Sorzano, Carlos O. S.},
     TITLE = {Advances in Xmipp for Cryo–Electron Microscopy: From Xmipp to Scipion},
     JOURNAL = {Molecules},
@@ -332,4 +367,28 @@
     abstract = {Image processing in cryogenic electron tomography (cryoET) is currently at a similar state as Single Particle Analysis (SPA) in cryogenic electron microscopy (cryoEM) was a few years ago. Its data processing workflows are far from being well defined and the user experience is still not smooth. Moreover, file formats of different software packages and their associated metadata are not standardized, mainly since different packages are developed by different groups, focusing on different steps of the data processing pipeline. The Scipion framework, originally developed for SPA (de la Rosa-Trevín et al., 2016), has a generic python workflow engine that gives it the versatility to be extended to other fields, as demonstrated for model building (Martínez et al., 2020). In this article, we provide an extension of Scipion based on a set of tomography plugins (referred to as ScipionTomo hereafter), with a similar purpose: to allow users to be focused on the data processing and analysis instead of having to deal with multiple software installation issues and the inconvenience of switching from one to another, converting metadata files, managing possible incompatibilities, scripting (writing a simple program in a language that the computer must convert to machine language each time the program is run), etcetera. Additionally, having all the software available in an integrated platform allows comparing the results of different algorithms trying to solve the same problem. In this way, the commonalities and differences between estimated parameters shed light on which results can be more trusted than others. ScipionTomo is developed by a collaborative multidisciplinary team composed of Scipion team engineers, structural biologists, and in some cases, the developers whose software packages have been integrated. It is open to anyone in the field willing to contribute to this project. The result is a framework extension that combines the acquired knowledge of Scipion developers in close collaboration with third-party developers, and the on-demand design of functionalities requested by beta testers applying this solution to actual biological problems.}
 }
 
+@article{chen2013,
+    title = {High-resolution noise substitution to measure overfitting and validate resolution in 3D structure determination by single particle electron cryomicroscopy},
+    journal = {Ultramicroscopy},
+    volume = {135},
+    pages = {24-35},
+    year = {2013},
+    issn = {0304-3991},
+    doi = {https://doi.org/10.1016/j.ultramic.2013.06.004},
+    url = {https://www.sciencedirect.com/science/article/pii/S0304399113001472},
+    author = {Shaoxia Chen and Greg McMullan and Abdul R. Faruqi and Garib N. Murshudov and Judith M. Short and Sjors H.W. Scheres and Richard Henderson},
+    keywords = {Single particle, Electron cryomicroscopy, Validation, Resolution, Overfitting, Beta-galactosidase},
+    abstract = {Three-dimensional (3D) structure determination by single particle electron cryomicroscopy (cryoEM) involves the calculation of an initial 3D model, followed by extensive iterative improvement of the orientation determination of the individual particle images and the resulting 3D map. Because there is much more noise than signal at high resolution in the images, this creates the possibility of noise reinforcement in the 3D map, which can give a false impression of the resolution attained. The balance between signal and noise in the final map at its limiting resolution depends on the image processing procedure and is not easily predicted. There is a growing awareness in the cryoEM community of how to avoid such over-fitting and over-estimation of resolution. Equally, there has been a reluctance to use the two principal methods of avoidance because they give lower resolution estimates, which some people believe are too pessimistic. Here we describe a simple test that is compatible with any image processing protocol. The test allows measurement of the amount of signal and the amount of noise from overfitting that is present in the final 3D map. We have applied the method to two different sets of cryoEM images of the enzyme beta-galactosidase using several image processing packages. Our procedure involves substituting the Fourier components of the initial particle image stack beyond a chosen resolution by either the Fourier components from an adjacent area of background, or by simple randomisation of the phases of the particle structure factors. This substituted noise thus has the same spectral power distribution as the original data. Comparison of the Fourier Shell Correlation (FSC) plots from the 3D map obtained using the experimental data with that from the same data with high-resolution noise (HR-noise) substituted allows an unambiguous measurement of the amount of overfitting and an accompanying resolution assessment. A simple formula can be used to calculate an unbiased FSC from the two curves, even when a substantial amount of overfitting is present. The approach is software independent. The user is therefore completely free to use any established method or novel combination of methods, provided the HR-noise test is carried out in parallel. Applying this procedure to cryoEM images of beta-galactosidase shows how overfitting varies greatly depending on the procedure, but in the best case shows no overfitting and a resolution of ~6Å. (382 words)}
+}
+
+@article{dubach2020,
+    author = {Dubach, Victor and Guskov, Albert},
+    year = {2020},
+    month = {07},
+    pages = {},
+    title = {The Resolution in X-ray Crystallography and Single-Particle Cryogenic Electron Microscopy},
+    volume = {10},
+    journal = {Crystals},
+    doi = {10.3390/cryst10070580}
+}
 
