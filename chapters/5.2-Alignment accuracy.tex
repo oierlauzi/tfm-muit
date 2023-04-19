@@ -1,0 +1,25 @@
+\documentclass[../main.tex]{subfiles}
+
+\begin{document}
+
+TO BE COMPLETED
+
+\subsection{Influence of the Wiener CTF correction}
+As mentioned in Chapter \ref{chap:implementation}, the approach to tackle the \gls{ctf} of the experimental images consists in correcting them with a Wiener filter. The issue of this approach is that not all frequencies can be recovered due to bad \gls{snr} or zero gain at the \gls{ctf}. Therefore, comparing those frequencies with the reference image may induce an artificial error. The aim of this section is to asses how this phenomenon affects the alignment accuracy.
+
+To do so, several experiments will be carried out. Firstly, simulated images will be aligned with no \gls{ctf} being applied to them (only noise). Obviously, experimental images can not be evaluated without \gls{ctf}, as this is an artefact of the microscope. In any case, this experiment will be useful to observe the accuracy loss that can be attributed to the presence of the \gls{ctf}. In the second trial, the experimental images will be clustered by their \glspl{ctf}, so that the \gls{ctf} can be assumed to be constant across all images of a given group. Then, each experimental image group can be aligned against a reference set filtered with the representative \gls{ctf} of that group. This approach, similar to the one followed by current refinement packages, will establish the baseline for the comparison.  In the last experiment, the experimental images' \gls{ctf} will be corrected with a Wiener filter, and then aligned against a clean set of reference images. 
+
+All of the alignments were performed with a resolution limit of $8 \si{\angstrom}$.
+
+As shown in the Figure \ref{}, this approach poses a slight accuracy penalty. However, it greatly simplifies the handling of the \gls{ctf} and it enables many optimisations down the road. We consider that these benefits leverage the small accuracy cost. As a consecuence, the rest of the tests will be done 
+
+\subsection{Influence of the cutoff frequency}
+
+\subsection{Influence of the vector compression}
+
+\subsection{Combined influence of considered factors}
+
+
+
+
+\end{document}

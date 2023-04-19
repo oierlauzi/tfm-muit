@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Metadata
 %
-\title{Development of a fast image alignment algorithm for Cryo-EM}
+\title{Development of a fast image alignment algorithm for Cryo-Electron Microscopy}
 \degree{Máster Universitario en Ingeniería de Telecomunicación}
 \thesistype{Trabajo de Fin de Máster}
 \author{Oier Lauzirika Zarrabeitia}
@@ -16,7 +16,7 @@
 % Paths
 %
 
-% Figure
+% Figures
 \graphicspath{{figures/}}
 
 % References
@@ -51,22 +51,22 @@
 \begin{abstract}
     \subfile{chapters/Resumen}
 \end{abstract}
+TO BE COMPLETED
 \textit{\textbf{Palabras clave:}}
-CryoEM, SPA, Tratamiento Digital de Imágenes
 \end{otherlanguage}
 
 \begin{abstract}
     \subfile{chapters/Abstract}
 \end{abstract}
 \textit{\textbf{Keywords: }}
-CryoEM, SPA, Digital Image Processing
+TO BE COMPLETED
 
 % ToC, ToF, ToT
 \newpage
 \tableofcontents
 \listoffigures
 \listoftables
-\lstlistoflistings
+%\lstlistoflistings
 
 % Glossary
 \printglossary[type=\acronymtype]
@@ -74,13 +74,13 @@ CryoEM, SPA, Digital Image Processing
 \mainmatter
 
 % Chapters
-\chapter{Introduction}
+\chapter{Introduction and objectives}
 \label{chap:introduction}
-\subfile{chapters/1-Introduction}
+\subfile{chapters/1-Introduction and objetives}
 
-\chapter{Objectives}
-\label{chap:objetives}
-\subfile{chapters/2-Objectives}
+\chapter{Single Particle Analysis}
+\label{chap:spa}
+\subfile{chapters/2-Single Particle Analysis}
 
 \chapter{State of the art}
 \label{chap:state_of_the_art}
@@ -102,21 +102,17 @@ CryoEM, SPA, Digital Image Processing
 \label{chap:future}
 \subfile{chapters/7-Future work}
 
+% Bibliography
 \printbibliography
 
+% Appendices
 \appendix
+
 \chapter{Social, economic, environmental, ethical and professional impacts}
+\label{app:impacts}
 \subfile{appendices/A-Social, economic, environmental, ethical and professional impacts}
 
 \chapter{Economic budget}
 \label{app:budget}
-
-\chapter{Single Particle Analysis}
-\label{app:spa}
-\begin{refsection}
-\subfile{appendices/C-Single Particle Analysis}
-\newpage
-\printbibliography[heading=subbibliography]
-\end{refsection}
 
 \end{document}

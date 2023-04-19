@@ -88,7 +88,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Glossary
 %
-\RequirePackage{glossaries}
+\RequirePackage[noredefwarn]{glossaries}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PDF utils
@@ -117,7 +117,10 @@
 %
 \RequirePackage{amsmath}
 \usepackage{amssymb}
+\usepackage{bm}
 \RequirePackage{siunitx}
+\RequirePackage{physics}
+\RequirePackage{cancel}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Source code

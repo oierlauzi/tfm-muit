@@ -1,0 +1,54 @@
+<mxfile host="app.diagrams.net" modified="2023-03-23T18:32:59.007Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0" etag="DQ_17MvUbqHpw3lr7Yd6" version="21.1.0" type="device">
+  <diagram name="Página-1" id="ewI61By78SQCNoef6P6P">
+    <mxGraphModel dx="691" dy="384" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="1" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ERwKMwote7PyxkMobmdI-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ERwKMwote7PyxkMobmdI-3" target="ERwKMwote7PyxkMobmdI-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-3" value="$$C$$" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="320" width="80" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-4" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ERwKMwote7PyxkMobmdI-7" target="ERwKMwote7PyxkMobmdI-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="80" y="350" as="sourcePoint" />
+            <mxPoint x="440" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-7" value="$$I_{exp}$$" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="325" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="ERwKMwote7PyxkMobmdI-8" target="ERwKMwote7PyxkMobmdI-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120" y="420" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="340" y="420" />
+              <mxPoint x="340" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-8" value="$$I_{ref}$$" style="text;html=1;strokeColor=none;fillColor=none;align=right;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="405" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="ERwKMwote7PyxkMobmdI-22" target="ERwKMwote7PyxkMobmdI-11">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="380" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ERwKMwote7PyxkMobmdI-11" target="ERwKMwote7PyxkMobmdI-21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-11" value="dist" style="shape=trapezoid;perimeter=trapezoidPerimeter;whiteSpace=wrap;html=1;fixedSize=1;rotation=90;" vertex="1" parent="1">
+          <mxGeometry x="330" y="350.31" width="119.37" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-21" value="$$\text{dist}(I_{exp}, I_{ref})$$" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="449.37" y="365.31" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="ERwKMwote7PyxkMobmdI-22" value="$$\tilde{C}^{-1}$$" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="320" width="80" height="40" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
