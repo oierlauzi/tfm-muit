@@ -30,7 +30,7 @@ This algorithm addresses this issue by correcting experimental images with a Wie
     \label{fig:4:wiener}
 \end{figure}
 
-Among other applications, the Wiener filter can be used to deduce the inverse filter for a \gls{lti} system, as is the case of the \gls{ctf} model. This process is also known as the Wiener deconvolution. The definition of the Wiener inverse filter is displayed at \eqref{eq:4:wiener}, which also expresses it in function of the \gls{ssnr}. Note that in absence of noise (infinite \gls{ssnr}), the filter tends to behave as the inverse filter\cite{wetzstein2018}. The term $N(f)/S(f)$ is usually refereed as the Wiener constant, which prevents overamplification when the direct filter's gain is low. Note that the $S(f)$ terms refers to the signal \gls{psd} before the direct filter, whilst the $N(f)$ term refers to the noise \gls{psd} after the filter. This signals are represented in the block diagram of Figure \ref{fig:4:wiener}.
+Among other applications, the Wiener filter can be used to deduce the inverse filter for a \gls{lti} system, as is the case of the \gls{ctf} model. This process is also known as the Wiener deconvolution. The definition of the Wiener inverse filter is displayed at \eqref{eq:4:wiener}, which also expresses it in function of the \gls{ssnr}. Note that in absence of noise (infinite \gls{ssnr}), the filter tends to behave as the inverse filter\cite{wetzstein2018}. The term $N(f)/S(f)$ is usually refereed as the Wiener constant, which prevents overamplification when the direct filter's gain is low. Note that the $S(f)$ terms refers to the signal \gls{psd} before the direct filter, whilst the $N(f)$ term refers to the noise \gls{psd} after the filter. This signals are represented in the block diagram of Figure \ref{fig:4:wiener_block}.
 
 \begin{equation}\label{eq:4:wiener}
 \begin{split}
@@ -45,7 +45,7 @@ Among other applications, the Wiener filter can be used to deduce the inverse fi
     \centering
     \includegraphics[width=.75\textwidth]{implementation/wiener}
     \caption{Wiener deconvolution block diagram}
-    \label{fig:4:wiener}
+    \label{fig:4:wiener_block}
 \end{figure}
 
 The Wiener filter was already implemented in Xmipp\cite{sorzano2004} as \texttt{xmipp\_ctf\_correct\_wiener2d} program, so the existing implementation was re-used for this algorithm. This program assumes a constant \gls{ssnr} profile across all frequencies. This constant \gls{ssnr} value is derived from the Filter's mean energy. It has been empirically proven that using a $10\si{\percent}$ of the filter's energy leads to good results\cite{grigorieff2017}.

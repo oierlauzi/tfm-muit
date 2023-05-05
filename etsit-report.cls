@@ -9,6 +9,7 @@
 %
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{etsit-report}
+\RequirePackage[utf8]{inputenc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Load base class (memoir), passing Spanish as a secondary language to
@@ -121,6 +122,8 @@
 \RequirePackage{siunitx}
 \RequirePackage{physics}
 \RequirePackage{cancel}
+
+\DeclareSIUnit\angstrom{\text{Å}} % To avoid warning
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Source code
@@ -248,10 +251,9 @@
 %
 \makeatletter
 \newcommand{\makefrontpage}{%
-    \newpage
     % Setup the page style
     \thispagestyle{empty}
-    \pagecolor{schoolcolor}\afterpage{\nopagecolor}
+    \newpagecolor{schoolcolor}\afterpage{\restorepagecolor}
     
     % Content
     \begin{center}
@@ -276,7 +278,6 @@
 %
 \makeatletter
 \def\@maketitle{%
-    \newpage
     % Setup the page style
     \thispagestyle{empty}
     
@@ -303,7 +304,7 @@
 %
 \makeatletter
 \newcommand{\makeinfopage}{%
-    \newpage
+    \cleardoublepage
     \vspace*{\fill}
     
     % Setup the page style

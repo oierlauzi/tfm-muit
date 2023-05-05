@@ -404,7 +404,7 @@
     abstract = {A maximum-likelihood approach to multi-reference image refinement is presented. In contrast to conventional cross-correlation refinement, the new approach includes a formal description of the noise, implying that it is especially suited to cases with low signal-to-noise ratios. Application of this approach to a cryo-electron microscopy dataset revealed two major classes for projections of simian virus 40 large T-antigen in complex with an asymmetric DNA-probe, containing the origin of simian virus 40 replication. Strongly bent projections of dodecamers showed density that may be attributed to the complexed double-stranded DNA, while almost straight projections revealed a twist in the relative orientation of the hexameric subunits. This new level of detail for large T-antigen projections was not detected using conventional techniques. For a negative stain dataset, maximum-likelihood refinement yielded results that were practically identical to those obtained using conventional multi-reference refinement. Results obtained using simulated data suggest that the efficiency of the maximum-likelihood approach may be further enhanced by explicitly incorporating the microscope contrast transfer function in the image formation model.}
 }
 
-@misc{cryoai, %TODO rename to levy2022
+@misc{levy2022,
     doi = {10.48550/ARXIV.2203.08138},
     url = {https://arxiv.org/abs/2203.08138},
     author = {Levy, Axel and Poitevin, Frédéric and Martel, Julien and Nashed, Youssef and Peck, Ariana and Miolane, Nina and Ratner, Daniel and Dunne, Mike and Wetzstein, Gordon},
@@ -479,20 +479,38 @@
     eprint = {https://academic.oup.com/nar/article-pdf/51/D1/D1503/49645431/gkac1062.pdf},
 }
 
-@article{tan2020,
-    title = {Cryo-EM Structures and Regulation of Arabinofuranosyltransferase AftD from Mycobacteria},
-    journal = {Molecular Cell},
-    volume = {78},
-    number = {4},
-    pages = {683-699.e11},
-    year = {2020},
-    issn = {1097-2765},
-    doi = {https://doi.org/10.1016/j.molcel.2020.04.014},
-    url = {https://www.sciencedirect.com/science/article/pii/S1097276520302562},
-    author = {Yong Zi Tan and Lei Zhang and José Rodrigues and Ruixiang Blake Zheng and Sabrina I. Giacometti and Ana L. Rosário and Brian Kloss and Venkata P. Dandey and Hui Wei and Richard Brunton and Ashleigh M. Raczkowski and Diogo Athayde and Maria João Catalão and Madalena Pimentel and Oliver B. Clarke and Todd L. Lowary and Margarida Archer and Michael Niederweis and Clinton S. Potter and Bridget Carragher and Filippo Mancia},
-    keywords = {glycosyltransferase, , lipomannan, lipoarabinomannan, arabinofuranose, membrane protein, nanodisc, single-particle cryo-electron microscopy, acyl carrier protein},
-    abstract = {Summary
-    Mycobacterium tuberculosis causes tuberculosis, a disease that kills over 1 million people each year. Its cell envelope is a common antibiotic target and has a unique structure due, in part, to two lipidated polysaccharides—arabinogalactan and lipoarabinomannan. Arabinofuranosyltransferase D (AftD) is an essential enzyme involved in assembling these glycolipids. We present the 2.9-Å resolution structure of M. abscessus AftD, determined by single-particle cryo-electron microscopy. AftD has a conserved GT-C glycosyltransferase fold and three carbohydrate-binding modules. Glycan array analysis shows that AftD binds complex arabinose glycans. Additionally, AftD is non-covalently complexed with an acyl carrier protein (ACP). 3.4- and 3.5-Å structures of a mutant with impaired ACP binding reveal a conformational change, suggesting that ACP may regulate AftD function. Mutagenesis experiments using a conditional knockout constructed in M. smegmatis confirm the essentiality of the putative active site and the ACP binding for AftD function.}
+@article {wong2014,
+    article_type = {journal},
+    title = {Cryo-EM structure of the \textit{Plasmodium falciparum} 80S ribosome bound to the anti-protozoan drug emetine},
+    author = {Wong, Wilson and Bai, Xiao-chen and Brown, Alan and Fernandez, Israel S and Hanssen, Eric and Condron, Melanie and Tan, Yan Hong and Baum, Jake and Scheres, Sjors HW},
+    editor = {Kühlbrandt, Werner},
+    volume = 3,
+    year = 2014,
+    month = {06},
+    pub_date = {2014-06-09},
+    pages = {e03080},
+    citation = {eLife 2014;3:e03080},
+    doi = {10.7554/eLife.03080},
+    url = {https://doi.org/10.7554/eLife.03080},
+    abstract = {Malaria inflicts an enormous burden on global human health. The emergence of parasite resistance to front-line drugs has prompted a renewed focus on the repositioning of clinically approved drugs as potential anti-malarial therapies. Antibiotics that inhibit protein translation are promising candidates for repositioning. We have solved the cryo-EM structure of the cytoplasmic ribosome from the human malaria parasite, \textit{Plasmodium falciparum}, in complex with emetine at 3.2 Å resolution. Emetine is an anti-protozoan drug used in the treatment of ameobiasis that also displays potent anti-malarial activity. Emetine interacts with the E-site of the ribosomal small subunit and shares a similar binding site with the antibiotic pactamycin, thereby delivering its therapeutic effect by blocking mRNA/tRNA translocation. As the first cryo-EM structure that visualizes an antibiotic bound to any ribosome at atomic resolution, this establishes cryo-EM as a powerful tool for screening and guiding the design of drugs that target parasite translation machinery.},
+    keywords = {malaria, \textit{Plasmodium falciparum}, ribosome, drug development, cryo-EM},
+    journal = {eLife},
+    issn = {2050-084X},
+    publisher = {eLife Sciences Publications, Ltd},
+}
+
+@article{bartesaghi2015,
+    doi = {10.1126/science.aab1576},
+    url = {https://doi.org/10.1126/science.aab1576},
+    year = {2015},
+    month = {06},
+    publisher = {American Association for the Advancement of Science ({AAAS})},
+    volume = {348},
+    number = {6239},
+    pages = {1147--1151},
+    author = {Alberto Bartesaghi and Alan Merk and Soojay Banerjee and Doreen Matthies and Xiongwu Wu and Jacqueline L. S. Milne and Sriram Subramaniam},
+    title = {2.2 A resolution cryo-{EM} structure of $\beta$-galactosidase in complex with a cell-permeant inhibitor},
+    journal = {Science}
 }
 
 @article{dang2019,
@@ -509,36 +527,66 @@
     abstract = {TRPV5 (transient receptor potential vanilloid 5) is a unique calcium-selective TRP channel essential for calcium homeostasis. Unlike other TRPV channels, TRPV5 and its close homolog, TRPV6, do not exhibit thermosensitivity or ligand-dependent activation but are constitutively open at physiological membrane potentials and modulated by calmodulin (CaM) in a calcium-dependent manner. Here we report high-resolution electron cryomicroscopy structures of truncated and full-length TRPV5 in lipid nanodiscs, as well as of a TRPV5 W583A mutant and TRPV5 in complex with CaM. These structures highlight the mechanism of calcium regulation and reveal a flexible stoichiometry of CaM binding to TRPV5.}
 }
 
-@article {wong2014,
-    article_type = {journal},
-    title = {Cryo-EM structure of the \textit{Plasmodium falciparum} 80S ribosome bound to the anti-protozoan drug emetine},
-    author = {Wong, Wilson and Bai, Xiao-chen and Brown, Alan and Fernandez, Israel S and Hanssen, Eric and Condron, Melanie and Tan, Yan Hong and Baum, Jake and Scheres, Sjors HW},
-    editor = {Kühlbrandt, Werner},
-    volume = 3,
-    year = 2014,
-    month = {jun},
-    pub_date = {2014-06-09},
-    pages = {e03080},
-    citation = {eLife 2014;3:e03080},
-    doi = {10.7554/eLife.03080},
-    url = {https://doi.org/10.7554/eLife.03080},
-    abstract = {Malaria inflicts an enormous burden on global human health. The emergence of parasite resistance to front-line drugs has prompted a renewed focus on the repositioning of clinically approved drugs as potential anti-malarial therapies. Antibiotics that inhibit protein translation are promising candidates for repositioning. We have solved the cryo-EM structure of the cytoplasmic ribosome from the human malaria parasite, \textit{Plasmodium falciparum}, in complex with emetine at 3.2 Å resolution. Emetine is an anti-protozoan drug used in the treatment of ameobiasis that also displays potent anti-malarial activity. Emetine interacts with the E-site of the ribosomal small subunit and shares a similar binding site with the antibiotic pactamycin, thereby delivering its therapeutic effect by blocking mRNA/tRNA translocation. As the first cryo-EM structure that visualizes an antibiotic bound to any ribosome at atomic resolution, this establishes cryo-EM as a powerful tool for screening and guiding the design of drugs that target parasite translation machinery.},
-    keywords = {malaria, \textit{Plasmodium falciparum}, ribosome, drug development, cryo-EM},
-    journal = {eLife},
-    issn = {2050-084X},
-    publisher = {eLife Sciences Publications, Ltd},
+@article{tan2020,
+    title = {Cryo-EM Structures and Regulation of Arabinofuranosyltransferase AftD from Mycobacteria},
+    journal = {Molecular Cell},
+    volume = {78},
+    number = {4},
+    pages = {683-699.e11},
+    year = {2020},
+    issn = {1097-2765},
+    doi = {https://doi.org/10.1016/j.molcel.2020.04.014},
+    url = {https://www.sciencedirect.com/science/article/pii/S1097276520302562},
+    author = {Yong Zi Tan and Lei Zhang and José Rodrigues and Ruixiang Blake Zheng and Sabrina I. Giacometti and Ana L. Rosário and Brian Kloss and Venkata P. Dandey and Hui Wei and Richard Brunton and Ashleigh M. Raczkowski and Diogo Athayde and Maria João Catalão and Madalena Pimentel and Oliver B. Clarke and Todd L. Lowary and Margarida Archer and Michael Niederweis and Clinton S. Potter and Bridget Carragher and Filippo Mancia},
+    keywords = {glycosyltransferase, , lipomannan, lipoarabinomannan, arabinofuranose, membrane protein, nanodisc, single-particle cryo-electron microscopy, acyl carrier protein},
+    abstract = {Summary
+    Mycobacterium tuberculosis causes tuberculosis, a disease that kills over 1 million people each year. Its cell envelope is a common antibiotic target and has a unique structure due, in part, to two lipidated polysaccharides—arabinogalactan and lipoarabinomannan. Arabinofuranosyltransferase D (AftD) is an essential enzyme involved in assembling these glycolipids. We present the 2.9-Å resolution structure of M. abscessus AftD, determined by single-particle cryo-electron microscopy. AftD has a conserved GT-C glycosyltransferase fold and three carbohydrate-binding modules. Glycan array analysis shows that AftD binds complex arabinose glycans. Additionally, AftD is non-covalently complexed with an acyl carrier protein (ACP). 3.4- and 3.5-Å structures of a mutant with impaired ACP binding reveal a conformational change, suggesting that ACP may regulate AftD function. Mutagenesis experiments using a conditional knockout constructed in M. smegmatis confirm the essentiality of the putative active site and the ACP binding for AftD function.}
 }
-
-
-
-
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % EMPIAR
 %
+@misc{empiar10028,
+    doi = {10.6019/empiar-10028},
+    url = {https://doi.org/10.6019/empiar-10028},
+    year = {2015},
+    month = may,
+    publisher = {{EMBL}-{EBI}},
+    author = {Wong, Wilson and Bai, Xiao-chen and Brown, Alan and Fernandez, Israel S and Hanssen, Eric and Condron, Melanie and Tan, Yan Hong and Baum, Jake and Scheres, Sjors HW},
+    title = {Cryo-{EM} structure of the Plasmodium falciparum 80S ribosome bound to the anti-protozoan drug emetine}
+}
 
+@misc{empiar10061,
+    doi = {10.6019/empiar-10061},
+    url = {https://doi.org/10.6019/empiar-10061},
+    year = {2016},
+    month = {04},
+    publisher = {{EMBL}-{EBI}},
+    author = {Alberto Bartesaghi and Alan Merk and Soojay Banerjee and Doreen Matthies and Xiongwu Wu and Jacqueline L. S. Milne and Sriram Subramaniam},
+    title = {Cryo-{EM} structure of $\beta$-galactosidase in complex with a cell-permeant inhibitor}
+}
+
+@misc{empiar10256,
+    doi = {10.6019/empiar-10256},
+    url = {https://doi.org/10.6019/empiar-10256},
+    year = {2019},
+    month = {02},
+    publisher = {{EMBL}-{EBI}},
+    author = {Shangyu Dang and Mark K. van Goor and Daniel Asarnow and YongQiang Wang and David Julius and Yifan Cheng and Jenny van der Wijst },
+    title = {Cryo-{EM} structure of TRPV5 with calmodulin bound}
+}
+
+@misc{empiar10391,
+    doi = {10.6019/empiar-10391},
+    url = {https://doi.org/10.6019/empiar-10391},
+    year = {2020},
+    month = {05},
+    publisher = {{EMBL}-{EBI}},
+    author = {Yong Zi Tan and Lei Zhang and José Rodrigues and Ruixiang Blake Zheng and Sabrina I. Giacometti and Ana L. Rosário and Brian Kloss and Venkata P. Dandey and Hui Wei and Richard Brunton and Ashleigh M. Raczkowski and Diogo Athayde and Maria João Catalão and Madalena Pimentel and Oliver B. Clarke and Todd L. Lowary and Margarida Archer and Michael Niederweis and Clinton S. Potter and Bridget Carragher and Filippo Mancia},
+    title = {Cryo-{EM} structure of Arabinofuranosyltransferase AftD from Mycobacteria, Mutant R1389S}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Online
@@ -661,5 +709,3 @@
     year          = {2008},
     publisher     = {Linköping Universitet}
 }
-
-
