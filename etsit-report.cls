@@ -120,8 +120,10 @@
 \usepackage{amssymb}
 \usepackage{bm}
 \RequirePackage{siunitx}
+\RequirePackage{eurosym}
 \RequirePackage{physics}
 \RequirePackage{cancel}
+
 
 \DeclareSIUnit\angstrom{\text{Å}} % To avoid warning
 
@@ -311,9 +313,9 @@
     \thispagestyle{empty}
     
     % Content
-    \colorbox{schoolcolor}{\parbox{\textwidth}{\Large \MakeUppercase{\@degree}}}
+    \colorbox{schoolcolor}{\parbox{\textwidth}{\raggedright\Large \MakeUppercase{\@degree}}}
     
-    \colorbox{schoolcolor}{\parbox{\textwidth}{\large \MakeUppercase{\@thesistype}}}
+    \colorbox{schoolcolor}{\parbox{\textwidth}{\raggedright\large \MakeUppercase{\@thesistype}}}
     \begin{tabular}{p{.2\textwidth} p{.7\textwidth}}
         \textbf{Título:}        & \@title \\[1em]
         \textbf{Autor:}         & \makecell[l]{\@author} \\[1em]
@@ -321,7 +323,7 @@
         \textbf{Departamento:}  & \@department \\[1em]
     \end{tabular}
     
-    \colorbox{schoolcolor}{\parbox{\textwidth}{\large \MakeUppercase{Miembros del Tribunal}}}
+    \colorbox{schoolcolor}{\parbox{\textwidth}{\raggedright\large \MakeUppercase{Miembros del Tribunal}}}
     \begin{tabular}{p{.2\textwidth} p{.7\textwidth}}
         \textbf{Presidente:}    & D. \\[1em]
         \textbf{Vocal}          & D. \\[1em]

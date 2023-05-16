@@ -105,10 +105,71 @@ FAISS allows to build very complex vector databases with a modular structure. De
 
 We have deduced that the former gallery generation approach can easily reach a size of many million of images. Provided that each image is represented by a couple of thousands coefficients, it can be easily inferred that storing all these coefficients in a raw array would require many Gigabytes. This may fit in high-end server \gls{cpu} memory, but it is unthinkable to store this amount of information on a \gls{gpu}.
 
-Therefore, we have chosen to use FAISS's vector quatization and compression techniques. These methods are designed to compress vectors into a handful of bytes, enabling to store huge datasets in \gls{gpu} memory. However, these compression techniques come at an accuracy cost. This accuracy loss is highly dependant on the nature of the data itself, as highly correlated data will tend to compress well, whilst independent variables will produce a significant degradation of quality. We will discuss the influence of these compression algorithms with \gls{cryoem} data in Chapter \ref{chap:results}.
+Therefore, we have chosen to use FAISS's vector quantisation and compression techniques. These methods are designed to compress vectors into a handful of bytes, enabling to store huge datasets in \gls{gpu} memory. However, these compression techniques come at an accuracy cost. This accuracy loss is highly dependant on the nature of the data itself, as highly correlated data will tend to compress well, whilst independent variables will produce a significant degradation of quality. We will discuss the influence of these compression algorithms with \gls{cryoem} data in Chapter \ref{chap:results}.
 
-We have opted to use the database architecture recommended by FAISS guidelines\cite{johnson2019} that best represents the magnitudes of our data estimates. This architecture uses the \gls{pq} vector compression technique to achieve aforementioned compression ratios. On top of it, it uses a \gls{ivf} data structure to accelerate searches. We have also selected these techniques because they have been implemented for \glspl{gpu}, so that the whole search process can be run in these accelerators. A brief description of these techniques is provided hereafter.
+One of the most widely known vector compression techniques is \gls{pca}. \Gls{pca} can be used to project vectors into a subspace in such a way that the energy lost during the projection is minimal. This projection reduces the dimensionality of the vectors, so more of them can be stored at a given space. Moreover, vector comparisons become more efficient as less components need to be compared.
 
+We have also considered using the database architecture recommended by FAISS guidelines\cite{johnson2019} that best represents the magnitudes of our data estimates. This architecture uses the \gls{pq} vector compression technique to achieve aforementioned compression ratios. On top of it, it uses a \gls{ivf} data structure to accelerate searches. We have also selected these techniques because they have been implemented for \glspl{gpu}, so that the whole search process can be run in these accelerators. A brief description of these techniques is provided hereafter.
+
+\subsubsection{Principal Component Analysis}
+\Gls{pca} is a family of techniques to reduce the dimensionality of vectors in such a way that the information lost in the process is minimised\cite{shalizi2012}. This is achieved with a linear projection of the vectors into a latent space. The basis vectors of this latent space correspond to the axes of the input data where the variance is maximal. For instance, Figure \ref{fig:4:pca} shows the axis with maximum variance of a set of 2D points.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{\textwidth}
+         \centering
+         \includegraphics[width=.5\textwidth]{implementation/pca/pca}
+         \caption{Principal Component Analysis}
+    \end{subfigure}\\
+    \vspace{2em}
+    \begin{subfigure}[b]{\textwidth}
+         \centering
+         \includegraphics[width=.5\textwidth]{implementation/pca/projection}
+         \caption{Projection into Principal Components}
+    \end{subfigure}\\
+    \vspace{2em}
+    \begin{subfigure}[b]{\textwidth}
+         \centering
+         \includegraphics[width=.5\textwidth]{implementation/pca/latent}
+         \caption{1D latent space from the 1st Principal component}
+    \end{subfigure}
+
+    \caption{Example of Principal Component Analysis dimensionality reduction}
+    \label{fig:4:pca}
+\end{figure}
+
+The effectiveness of the \gls{pca} greatly depends on the covariance between axes. If axes are independent random variables (covariance is zero) there is no principal component and dimensionality reductions will produce a proportional information loss. Contrary to this, if the axes are highly correlated, discarding the least important principal components will produce little to no degradation\cite{shalizi2012}\cite{jolliffe2002}.
+
+The first step to perform a \gls{pca} is to centre samples around the origin of coordinates. To do so, the centroid of the samples is subtracted from them:
+
+\begin{equation}
+    \bm{x_i} = \bm{a_i} - \bm{\mu}
+\end{equation}
+
+\begin{equation}
+    \bm{\mu} = \frac{1}{N}\sum_{i=1}^{N} \bm{a_i}
+\end{equation}
+
+We can define the sample matrix $X$ as the vertical stacking of the mean centred sample vectors:
+
+\begin{equation}
+    \bm{X} = 
+    \begin{bmatrix}
+        \bm{x_1}^T \\
+        \bm{x_2}^T \\
+        \vdots \\
+        \bm{x_N}^T
+    \end{bmatrix}
+\end{equation}
+
+This enables us to compute the covariance matrix of the vectors:
+
+\begin{equation}
+    \text{Cov}(\bm{X}) = \frac{1}{N-1} \bm{X}^T \bm{X}
+\end{equation}
+
+After performing a \gls{svd} decomposition of the covariance matrix so that $\text{Cov}(\bm{X}) = \bm{U}^T \bm{\Lambda} \bm{U}$ where $\bm{U}$ is a orthonormal basis formed by the eigenvectors of the covariance matrix and $\bm{\Lambda} = \text{diag}(\lambda_1, \lambda_2, \dots, \lambda_N)$ is a diagonal matrix with the eigenvalues of the covariance matrix. These eigenvalues represent the variance in their corresponding eigenvector's direction. Hence, selecting a handful of eigenvectors with the largest eigenvalues leads to an orthonormal basis where most of the input vector's energy is preserved.  This basis can be used to perform a linear projection of vectors into a lower dimension latent space with minimal information loss.
+ 
 \subsubsection{Product Quantisation}
 \Glsfirst{pq} is a vector compression technique suitable for performing efficient \gls{knn} searches. Unlike other vector compression techniques, it has been designed to work well with large vectors\cite{chang2022a}\cite{jegou2011}.
 
@@ -121,7 +182,7 @@ This algorithm splits each vector into fixed sized chunks, which will be individ
     \label{fig:4:pq_division}
 \end{figure}
 
-At the beginning, the \gls{pq} encoder needs to be trained with a representative subset of the dataset. In this training process, a k-means is executed for each chunk of the vector, producing $k$ centroids. This process is illustrated in Figure \ref{fig:4:pq_kmeans}. K-means is a unsupervised clustering algorithm that groups points in such a way that the distance to the centroid of their corresponding class is minimized\cite{sontag2012}. K-means requires the training set to be much larger than $k$ in order to be effective.
+At the beginning, the \gls{pq} encoder needs to be trained with a representative subset of the dataset. In this training process, a k-means partition computed for each chunk of the vector, producing $k$ centroids. This process is illustrated in Figure \ref{fig:4:pq_kmeans}. K-means is a unsupervised clustering algorithm that groups points in such a way that the distance to the centroid of their corresponding class is minimized\cite{sontag2012}. K-means requires the training set to be much larger than $k$ in order to be effective.
 
 \begin{figure}[htbp]
     \centering
@@ -152,7 +213,7 @@ This technique also allows to efficiently compute distances between a given pair
 
 Having a fast distance estimate accelerates \gls{knn} vector searches, as these involve comparing a given vector against all the vectors in the dataset. Nevertheless, \gls{pq} comes with its own drawbacks. As its name suggests, it is a quantisation procedure, hence, there will be some accuracy loss. This accuracy loss is determined by the dispersion of the data. If the data is structured in a few compact clusters, K-means will be able to identify them and the quantisation error will be minimal. Contrary to this, if the data is random, the centroids may not be representative and a lot of quantisation error will be introduced.
 
-The quantisation loss can be minimised applying a linear transform to the vectors before quantizing them. This linear transform is represented with a rotation matrix, which will rotate vectors in such a way that the quantisation error is minimised. Due to the fact that rotation matrices are orthonormal, distances are preserved after this rotation\cite{ge2013}. 
+The quantisation loss can be minimised applying a linear transform to the vectors before quantizing them. This linear transform is represented with a rotation matrix, which will rotate vectors in such a way that the quantisation error is minimised. Due to the fact that rotation matrices are orthonormal, distances are preserved after this rotation\cite{ge2013}. This matrix is calculated from a \gls{pca} matrix, but its columns are reordered in such a way that it ensures that information is evenly spread across all chunks. 
 
 \subsubsection{Inverted File}
 \Gls{pq} provides a compact way to store vectors and reduce distance computation time. However, it is not effective enough when searching across millions of vectors\cite{chang2022b}. Therefore, it is usually complemented with \glsfirst{ivf} to significantly reduce search times.
@@ -200,13 +261,13 @@ Similarly, the Pearson correlation can be calculated by subtracting the mean bef
 Lastly, the weighted Euclidean distance can be calculated by scaling vector coefficients before computing the Euclidean distance:
 
 \begin{equation}\label{eq:4:l2_w}
-    \left\lVert \bm{x} - \bm{y} \right\rVert^2_{\bm{w}} = \left\lVert W(\bm{x} - \bm{y}) \right\rVert^2
+    \left\lVert \bm{x} - \bm{y} \right\rVert^2_{\bm{w}} = \left\lVert \bm{\tilde{W}}(\bm{x} - \bm{y}) \right\rVert^2
 \end{equation}
 
 where 
 
 \begin{equation}
-    W = \text{diag}(\bm{w})
+    \bm{\tilde{W}} = \text{diag}(\sqrt{\bm{w}})
 \end{equation}
 
 Note that the previous definitions have been stated for real numbers. However, our vectors have been ensembled from complex vectors by interleaving their real and imaginary part:

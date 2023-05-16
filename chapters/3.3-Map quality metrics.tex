@@ -23,7 +23,7 @@ The \gls{fsc} is calculated by splitting the angular assigned particle set into 
                     }
 \end{equation}
 
-Typically, the \gls{fsc} tends to have a low-pass behaviour, as the \gls{snr} is worse at high frequency. This empirical fact is shown in the Figure \ref{fig:3:fsc}.  In fact, There is a direct relation between the \gls{fsc} and the \gls{ssnr}. The expression \eqref{eq:3:ssnr} suggests that the \gls{fsc} is proportional to the signal power, whilst the complement of the \gls{fsc} refers to the noise power.
+Typically, the \gls{fsc} tends to have a low-pass behaviour, as the \gls{snr} is worse at high frequency. This empirical fact is shown in the Figure \ref{fig:3:fsc}.  In fact, There is a direct relation between the \gls{fsc} and the \gls{ssnr}:
 
 \begin{equation}\label{eq:3:ssnr}
     SSNR(\omega) = \frac{FSC(\omega)}{1 - FSC(\omega)} \Leftrightarrow FSC(\omega) = \frac{SSNR(\omega)}{1 + SSNR(\omega)}
@@ -37,6 +37,6 @@ Typically, the \gls{fsc} tends to have a low-pass behaviour, as the \gls{snr} is
     \label{fig:3:fsc}
 \end{figure}
 
-Due to this empirical low-pass tendency, it is useful to establish a threshold. In this way, the resolution of a map can be determined as the first value where this \gls{fsc} threshold is crossed. This provides a numerical value that unequivocally defines the quality of the map. The \gls{fsc} threshold value election is source for a long lived discussion in academia. Some experts argue that this threshold should be $0.5$, in reference to the cutoff frequency in the context of signal processing. Some other experts prefer to use $0.143$. This value reflects better the resolution of the map that would be obtained when considering the whole particle set (instead of halves)\cite{chen2013}. As a consequence of this debate, the threshold value used for determining the resolution of the map needs to be provided along the actual measurement.
+Due to this empirical low-pass tendency, it is useful to establish a threshold. In this way, the resolution of a map can be determined as the first value where this \gls{fsc} threshold is crossed. This provides a numerical value that quantitatively defines the quality of the map. The \gls{fsc} threshold value election is source for a long lived discussion in academia. Some experts argue that this threshold should be $0.5$, in reference to the cutoff frequency in the context of signal processing. Some other experts prefer to use $0.143$. This value reflects better the resolution of the map that would be obtained when considering the whole particle set (instead of halves)\cite{chen2013}. As a consequence of this debate, the threshold value used for determining the resolution of the map needs to be provided along the actual measurement.
 
 \end{document}
