@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2023-05-06T09:07:14.965Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0" etag="sgkRIzV3n1vMKkmyQHv6" version="21.2.9" type="device">
+<mxfile host="app.diagrams.net" modified="2023-05-18T12:46:13.177Z" agent="Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0" etag="uPw97jtCWIWk0LX9rH0p" version="21.3.2" type="device">
   <diagram name="Página-1" id="-pn4PrcCB0aOLdGNFKwQ">
-    <mxGraphModel dx="574" dy="317" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="988" dy="549" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -16,64 +16,64 @@
             <mxPoint x="560" y="480" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-3" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-3" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="360" y="374" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-4" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-4" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="390" y="339" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-5" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-5" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="380" y="384" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-6" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-6" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="400" y="364" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-7" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-7" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="410" y="374" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-8" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-8" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="420" y="354" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-9" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-9" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="400" y="394" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-10" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-10" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="430" y="384" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-11" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-11" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="430" y="369" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-12" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-12" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="440" y="344" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-13" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-13" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="380" y="364" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-15" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-15" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="450" y="359" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-17" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-17" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="470" y="349" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-18" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-18" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="490" y="329" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-19" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-19" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="500" y="339" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-20" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-20" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="450" y="319" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-21" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-21" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="490" y="359" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-24" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-24" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="370" y="394" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-25" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-25" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#F1B880;strokeColor=#f18e00;" parent="1" vertex="1">
           <mxGeometry x="470" y="329" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-34" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=5;exitDy=5;exitPerimeter=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" source="GVC4xmCI0ztt-ApkChza-32" edge="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-34" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=5;exitDy=5;exitPerimeter=0;fillColor=#50A1F2;strokeColor=#004489;" parent="1" source="GVC4xmCI0ztt-ApkChza-32" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="520" y="320" as="targetPoint" />
           </mxGeometry>
@@ -83,16 +83,16 @@
             <mxPoint x="34" y="-15" as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="GVC4xmCI0ztt-ApkChza-32" value="" style="shape=cross;whiteSpace=wrap;html=1;size=0;rotation=45;fillColor=#dae8fc;strokeColor=#6c8ebf;" parent="1" vertex="1">
+        <mxCell id="GVC4xmCI0ztt-ApkChza-32" value="" style="shape=cross;whiteSpace=wrap;html=1;size=0;rotation=45;fillColor=#50A1F2;strokeColor=#004489;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="435" y="355" width="10" height="10" as="geometry" />
         </mxCell>
-        <mxCell id="DfE6INUnDFdgPhouwwiO-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=5;exitDy=5;exitPerimeter=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1" source="GVC4xmCI0ztt-ApkChza-32">
+        <mxCell id="DfE6INUnDFdgPhouwwiO-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=5;exitDy=5;exitPerimeter=0;fillColor=#50A1F2;strokeColor=#004489;" parent="1" source="GVC4xmCI0ztt-ApkChza-32" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="420" y="320" as="targetPoint" />
             <mxPoint x="450" y="370" as="sourcePoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="DfE6INUnDFdgPhouwwiO-2" value="&lt;div&gt;2nd Principal &lt;br&gt;&lt;/div&gt;&lt;div&gt;Component&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="DfE6INUnDFdgPhouwwiO-1">
+        <mxCell id="DfE6INUnDFdgPhouwwiO-2" value="&lt;div&gt;2nd Principal &lt;br&gt;&lt;/div&gt;&lt;div&gt;Component&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="DfE6INUnDFdgPhouwwiO-1" vertex="1" connectable="0">
           <mxGeometry x="0.8678" y="-2" relative="1" as="geometry">
             <mxPoint x="-8" y="-22" as="offset" />
           </mxGeometry>

@@ -1,7 +1,12 @@
 \documentclass[../main.tex]{subfiles}
 
 \begin{document}
-TO BE COMPLTED
+Image alignment is a core problem in the context of \gls{cryoem} image processing. Several key steps involved in the \gls{spa} image processing pipeline involve performing an image alignment. Algorithms such as 2D classification, ab-initio volume reconstruction, 3D refinement and 3D classification are examples that fall in this category.
+
+Moreover, image alignment is a very expensive algorithm, as it involves comparing millions of pairs of images. Thus, it can be stated that a significant fraction of the time spent in a typical \gls{spa} workflow can be attributed to this problem. The main focus of this project is to develop a novel image alignment method that outperforms existing solutions without sacrificing the quality of the results.
+
+%TODO
+
 
 \subsection{CTF Correction}
 When comparing experimental images to reference ones, the \gls{ctf} must be taken into consideration. Most implementations choose to apply the \gls{ctf} to the reference images. The main drawback of this election is that the \gls{ctf} varies across images, hence, the \gls{ctf} needs to be re-applied to the reference gallery for each experimental image\cite{scheres2005}.
@@ -63,12 +68,14 @@ Image comparisons can be formulated as vector comparisons. From now on we will c
 
 It has been empirically proven that most of the alignment information is below a resolution of $6-8 \si{\angstrom}$\cite{scheres2021}. This means that a downsampled version of the image could be used. Provided that the $160\times160$ image was captured with a pixel size of $2 \si{\angstrom}$, it could be downsampled with a factor of $2$, which would lead to a vector size of $6400$. 
 
-What is more, because of the orthonormality of the \gls{dft}, the comparisons can be performed in Fourier space. This allows to extract coefficients from a disc with the radius of the resolution limit. This disc involves slightly less coefficients due to the fact that it is inscribed inside the downsampled Fourier space. The DC component of the image can also be omitted, as it does not provide any information for alignment. In the example shown in the Figure \ref{fig:4:downsampling}, the Fourier disc has $2512$ complex coefficients. For our purposes, complex coefficients can be flattened to a vector twice as large. For the previous example, this leads to a vector of $5024$ dimensions, slightly less than the downsampled version of the image.
+What is more, because of the orthonormality of the \gls{dft}, the comparisons can be performed in Fourier space. This allows to extract coefficients from a disc with the radius of the resolution limit. This disc involves slightly less coefficients due to the fact that it is inscribed inside the downsampled Fourier space. The DC component of the image can also be omitted, as it does not provide any information for alignment. In the previous example, this would reduce the coefficient count to $2512$ complex coefficients. For our purposes, complex coefficients can be flattened to a vector twice as large. This leads to a vector of $5024$ dimensions, slightly less than the downsampled version of the image.
+
+The Figure \ref{fig:4:downsampling} illustrates this Fourier coefficient extraction. Note that only the left half of the Fourier space is considered, as the Fourier transform of a real valued signal poses conjugate symmetry. Thus, half of the Fourier space is redundant. 
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{implementation/downsampling}
-    \caption{Comparison of downsampling and coefficient extraction}
+    \caption{Fourier coefficient extraction}
     \label{fig:4:downsampling}
 \end{figure}
 
@@ -76,26 +83,24 @@ We have observed slightly more accurate results when using the \gls{dct} instead
 
 As a consequence, we will select a low frequency disc in Fourier space to transform all images into a search vector. As shown in the previous example, the images can be reduced by a factor of $5$ at little accuracy cost. In the results chapter, we will discuss the accuracy loss that can be attributed to discarding high frequency information.
 
-\subsection{Reference gallery generation}
-The reference gallery generation was formally described in Chapter \ref{chap:state_of_the_art}. The aim of this section is to describe the practical implementation used for this algorithm. This implementation groups alignment parameters in such a way that intermediary images can be stored and used repeteadly, avoiding redundant computations.
+\subsection{Reference dataset generation}
+The reference dataset consists in all the in-plane transformations of the reference images. This implementation groups alignment parameters in such a way that intermediary images can be stored and used repeatedly, avoiding redundant computations. Moreover, the individual operations have been reduced to the bare-minimum, so that their execution time is minimised.
 
-The first group is formed by the tilt and rot Euler angles which describe the projection direction. Using the \texttt{xmipp\_angular\_project\_library}\cite{sorzano2004} program, a set of equally spaced projections of the reference volume is generated. This set of images has all the considered variations of the tilt and rot Euler angles.
+Firstly, each image of the reference gallery is rotated in its own plane by a set of equally distributed angles. At this point, the images are transformed to Fourier space, so that the low frequency disc can be extracted as described earlier. In theory, this last operation could be done before applying the in-plane rotations to the images, which would imply far less repetitions of this operation. However, this is not feasible in practice because interpolating Fourier coefficients tends produce incorrect results.
 
-Then, each of these projected images is rotated in its own plane by a set of equally distributed angles, adding the third and last Euler angle variation, psi. At this point, the images are transformed to Fourier space, so that the low frequency disc can be extracted as described earlier. In theory, this last operation could be done before applying the in-plane rotations to the images, which would imply far less repetitions of this operation. However, this is not feasible in practice because interpolating Fourier coefficients tends produce incorrect results.
-
-Finally, a set of shift filters is applied to the extracted Fourier coefficients. This operation can be performed in Fourier space because a shift filter is a \gls{lti} system, which is applied as a point operation to the Fourier coefficients. Hence, it can be only applied to the coefficients extracted from the disc. The \gls{dft} of the shift filter is defined as \eqref{eq:4:shift} where $\bm{\Omega}$ is the frequency vector and $\bm{\Delta}$ is the shift vector in pixels.
+Then, the extracted Fourier coefficients can be multiplied with a set of shift filters defined in Fourier space. The shift filters define a translation in the spatial domain. This operation can be performed in Fourier space because a shift filter is a \gls{lti} system, which is applied as a point operation to the Fourier coefficients. Thus, it can be only applied to the coefficients extracted from the disc. The transfer function of the shift filter is defined as \eqref{eq:4:shift} where $\bm{\Omega}$ is the frequency vector and $\bm{\Delta}$ is the shift vector in pixels.
 
 \begin{equation}\label{eq:4:shift}
     H(\bm{\Omega}) = e^{-j\bm{\Omega} \cdot \bm{\Delta}}
 \end{equation}
 
-The whole process has been illustrated in Figure \ref{fig:4:gallery}. At the end, a vast amount of vectors is generated, representing all possible combinations of projection directions and in-plane transforms. Each experimental image will be searched across this collection of vectors to find a best match.
+The whole process has been illustrated in Figure \ref{fig:4:reference}. At the end, a vast amount of vectors is generated, representing all possible combinations of in-plane transforms of the reference gallery. Each experimental image will be searched across this collection of vectors to find a best match.
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=\textwidth]{implementation/gallery}
-    \caption{Gallery generation}
-    \label{fig:4:gallery}
+    \caption{Reference dataset generation}
+    \label{fig:4:reference}
 \end{figure}
 
 \subsection{Vector search techniques}

@@ -6,7 +6,7 @@
 
 Traditional software packages in the context of \gls{spa} are Spider\cite{shaikh2008}, Imagic, Eman\cite{ludke2000}, Cistem\cite{grigorieff2018}, Relion\cite{scheres2021} and Xmipp\cite{sorzano2004}. In 2016 the introduction of Cryosparc\cite{cryosparc} was disruptive due to its significant performance improvements. Closely related to this, Scipion\cite{delarosa2016} is a platform that enables end users to easily interoperate between different image processing packages.
 
-One of the recent leaps in the context of \gls{cryoem} has been the usage of hardware accelerators such as \glspl{gpu} to significantly reduce processing times. Although \glspl{gpu} are only well suited for highly parallelisable operations, in those cases, the computation time is reduced by several orders of magnitude. In fact, this has been one of the main factors leading to the recent growth of \gls{cryoem}.
+One of the recent leaps in the context of \gls{cryoem} has been the usage of hardware accelerators such as \glspl{gpu} to significantly reduce processing times. Although \glspl{gpu} are only well suited for highly parallelisable operations, in those cases, the computation time is reduced by several orders of magnitude. Indeed, this has been one of the main factors leading to the recent growth of \gls{cryoem}.
 
 Currently, all of the image processing suites are steering towards streaming image processing. This means that data is processed at the same time that it is acquired in the microscope. This allows to adjust acquisition parameters in real-time, optimising resource utilisation and improving the quality of the final results.
 
@@ -24,13 +24,13 @@ In the context of \gls{spa}, all widespread image processing tools have been int
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=\textwidth]{scipion_statistics/package-by-type}
+    \includegraphics[width=.8\textwidth]{scipion_statistics/package-by-type}
     \caption{Scipion package usage statistics by type}
     \label{fig:3:scipion_statistics_type}
 \end{figure}
 
 Scipion is highly modular, as it can be extended with plugins. These plugins are usually related to the integration of a image processing suite, such as Relion or Cryosparc. A plugin provides a set of protocols, which can can be seen as a ``steps'' in the image processing workflow. Then, the user can easily build its own workflow, freely choosing the procedure used for each stage. What is more, the user may repeat the same step using different protocols and consensuate their outputs. Therefore, Scipion not only integrates alien algorithms, but it also provides some added value to the results.
 
-Many of the current Scipion developments focus on implementing streaming workflows. All of the benefits stated earlier still apply to streaming workflows. Moreover, there is some innovation related to the automated control of the microscope from the image processing software. This control feedback loop enables microscope operation with little human intervention, significantly reducing costs.
+Many of the current Scipion developments focus on implementing streaming workflows, where all the other benefits stated earlier still apply. Moreover, there is some innovation related to the automated control of the microscope from the image processing software. This control feedback loop enables microscope operation with little human intervention, significantly reducing costs.
 
 \end{document}

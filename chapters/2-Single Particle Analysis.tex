@@ -6,7 +6,7 @@
 
 \Gls{spa} refers to a \gls{cryoem} technique that allows to obtain models of proteins at almost atomic resolution. Although it has been around for decades, recent technological leaps have led to an increase in interest from users and researchers. This technique involves everything from the sample preparation to the final image processing, including the image acquisition in the microscope\cite{dimitry2019}. However, this chapter will focus on explaining the image processing part of the workflow.
 
-The essence of \gls{spa} lies on rapidly freezing thousands of specimens in a thin film of ice. In this way, each specimen will be held in place with the random orientation it had before it was frozen. At this point, the sample is scanned by a \gls{tem}, obtaining 2D projections of the specimens. These projections can be thought of as a shadow of the electron density of the sample. Using state-of-the-art image processing techniques, this collection of projections can be used to reconstruct the 3D electron density map of the specimen under study. This process is illustrated in the Figure \ref{fig:2:acquisition_reconstruction}. The reconstruction process involves many challenges, as the input images have very poor \gls{snr} and other artefacts.
+The essence of \gls{spa} lies on rapidly freezing thousands of specimens in a thin film of ice. In this way, each specimen will be held in place with the random orientation it had before it was frozen. At this point, the sample is scanned by a \gls{tem}, obtaining 2D projections of the specimens. These projections can be thought of as a shadow of the electron density of the sample. Using advanced image processing techniques, this collection of projections can be used to reconstruct the 3D electron density map of the specimen under study. Figure \ref{fig:2:acquisition_reconstruction} provides an illustration of this process. Nevertheless, the reconstruction process involves many challenges, as the input images have very poor \gls{snr} and other artefacts.
 
 \begin{figure}[htbp]
     \centering
@@ -28,7 +28,7 @@ The essence of \gls{spa} lies on rapidly freezing thousands of specimens in a th
     \label{fig:2:acquisition_reconstruction}
 \end{figure}
 
-The studied sample is prepared on a copper of gold grid, which is inserted into the \gls{em} chamber. Each of spot of the sample can only be exposed to the electron beam for a limited amount of time before it is degraded. Recent leaps in sensor technology have sped up the required exposition time for the sensors, allowing them to capture multiple frames of the sample before degrading it. The set of frames captured from a given tile is known as movie. These movies are the starting point of the \gls{spa} image processing workflow. This workflow is summarised in the Figure \ref{fig:2:spa_workflow} and it will be detailed hereafter. 
+The studied sample is prepared on a copper of gold grid, which is inserted into the \gls{em} chamber. Each of spot of the sample can only be exposed to the electron beam for a limited amount of time before it is degraded. Recent leaps in sensor technology have sped up the required exposition time for the sensors, allowing them to capture multiple frames of the sample before degrading it. The set of frames captured from a given spot is known as movie. These movies are the starting point of the \gls{spa} image processing workflow. This workflow is summarised in the Figure \ref{fig:2:spa_workflow} and it will be detailed hereafter. 
 
 \begin{landscape}
     \begin{figure}
@@ -49,7 +49,7 @@ The frames contained in a movie are in chronological order. As a result, the las
 Additionally, the electron beam positioning system drifts between frames and the sample tends to bend, which leads to optical flow between frames. Consequently, the frames are not aligned to one another. This needs to be fixed before attempting to average the frames, as otherwise the resulting micrograph would loose resolution.
 
 \subsection{CTF estimation}
-\Glspl{tem} do not have a planar frequency response. Instead, they ``colour'' the images with a characteristic \gls{ctf} known as Thon rings. This transfer function has a sinusoidal appearance, with decreasing periodicity and a overall tendency to attenuate higher frequencies\cite{cryoem101}. The cut-off frequency of this decaying envelope is used to determine the maximum resolution of the micrograph. In addition, the rings may have elliptical shape, being wider in some axis. This is known as astigmatism. A example of a \gls{tem} \gls{ctf} is shown in the Figure \ref{fig:2:ctf}.
+\Glspl{tem} do not have a planar frequency response. Instead, they ``colour'' the images with a characteristic \gls{ctf} known as Thon rings. This transfer function has a sinusoidal appearance, with decreasing periodicity and a overall tendency to attenuate higher frequencies\cite{cryoem101}.  In addition, the rings may have elliptical shape, being wider in some axis. This is known as astigmatism. A example of a \gls{tem} \gls{ctf} is shown in the Figure \ref{fig:2:ctf}.
 
 \begin{figure}[htbp]
     \centering
@@ -130,7 +130,7 @@ These 2D classes have many applications. For instance, their averages can be use
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=.75\textwidth]{SPA/2d_classification}\\
-    Images obtained from: \cite{greg}
+    Image obtained from: \cite{greg}
     \caption{Example of 2D classification}
     \label{fig:2:2d_classification}
 \end{figure}
@@ -173,7 +173,7 @@ Most of the state-of-the art packages perform the following refinement cycle rep
 
 \begin{enumerate}
     \item Project the current volume(s) from different angles to obtain a projection gallery.
-    \item For each experimental image find the most similar image in the gallery and assign its projection angle. Note that in-plane transformations (rotations and translations) need to be taken into account. Most of the existing solutions differ in this step, as many similarity metrics can be used.
+    \item For each experimental image find the most similar image in the gallery and assign its projection angle. Note that in-plane transformations (rotations and translations) need to be taken into account. Most of the existing solutions differ in this step, as many similarity metrics and exploration patterns can be used.
     \item Reconstruct the volume(s) with the angular assigned experimental images.
     \item Repeat steps 1 to 3 using the newly obtained volume. The algorithm should converge to a local minima\cite{sigworth2015}. When the loop stops producing significant changes or a desired resolution is achieved, the cycle should be stopped.
 \end{enumerate}
@@ -191,7 +191,7 @@ Nowadays, most implementations make use of the Fourier Central Slice theorem to 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=.5\textwidth]{SPA/3d_fourier_reconstruction}\\
-    \cite{nogales2015}
+    Image obtained from: \cite{nogales2015}
     \caption{Fourier Slice Theorem illustration for 3D}
     \label{fig:2:3dfourier}
 \end{figure}

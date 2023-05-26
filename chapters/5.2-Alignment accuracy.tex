@@ -23,7 +23,7 @@ It can be noted that the angular assignment error for EMPIAR-10028 is considerab
     \centering
     \begin{subfigure}[b]{.8\textwidth}
          \centering
-         %\includegraphics[width=\linewidth]{results/ctf/simulated/angle error}
+         \includegraphics[width=\linewidth]{results/ctf/simulated/angle error}
          \caption{Simulated images}
     \end{subfigure}\\
     \vspace{2em}
@@ -40,7 +40,7 @@ It can be noted that the angular assignment error for EMPIAR-10028 is considerab
     \centering
     \begin{subfigure}[b]{.8\textwidth}
          \centering
-         %\includegraphics[width=\linewidth]{results/ctf/simulated/shift error}
+         \includegraphics[width=\linewidth]{results/ctf/simulated/shift error}
          \caption{Simulated images}
     \end{subfigure}\\
     \vspace{2em}
@@ -57,7 +57,7 @@ It can be noted that the angular assignment error for EMPIAR-10028 is considerab
     \centering
     \begin{subfigure}[b]{.8\textwidth}
          \centering
-         %\includegraphics[width=\linewidth]{results/ctf/simulated/resolution}
+         \includegraphics[width=\linewidth]{results/ctf/simulated/resolution}
          \caption{Simulated images}
     \end{subfigure}\\
     \vspace{2em}
@@ -75,7 +75,7 @@ One of the key innovations of this algorithm is that it performs efficient vecto
 
 Several compression techniques will be considered in order to select the best compromise between speed and accuracy. Similarly to the previous experiments, the tests will be carried out with a resolution limit of $15 \si{\angstrom}$. For reference, an alignment without any vector compression will also be considered. The raw input vectors have on average around $1300$ components, which require $5200 \si{\byte}$ to be stored in 32 bit floating point format.
 
-The first evaluated compression technique will be a \gls{pca}. As stated in chapter \ref{chap:implementation}, this compression technique reduces the dimensionality though a linear projection in such a way that most of the signal energy is kept. In this case, input vectors will be reduced to $128$ and $64$ components, leading to an approximate compression rate of x10 and x20, respectively. These vectors will have a constant storage cost of $512\si{\byte}$ and $256\si{\byte}$. Additionally the \gls{pca} projection matrix needs to be stored, which has a inappreciable size when a large quantity of vectors is used.
+The first evaluated compression technique will be a \gls{pca}. As stated in Chapter \ref{chap:implementation}, this compression technique reduces the dimensionality though a linear projection in such a way that most of the signal energy is kept. In this case, input vectors will be reduced to $128$ and $64$ components, leading to an approximate compression rate of x10 and x20, respectively. These vectors will have a constant storage cost of $512\si{\byte}$ and $256\si{\byte}$. Additionally the \gls{pca} projection matrix needs to be stored, which has a inappreciable size when a large quantity of vectors is used.
 
 Secondly, the \gls{ivf}-\gls{pq} vector compression technique described in Chapter \ref{chap:implementation} will be tested. In this case, each block of the vector will be quantised into 256 cells, so that a single byte can be used to represent it. The vector will be divided either in 48 or 32 blocks, so that $48\si{\byte}$ or $32\si{\byte}$ are needed to store it. In this case, the compression ratios are in the order of x100.
 
@@ -142,8 +142,55 @@ The Figure \ref{fig:5:vector_size} illustrates the storage costs for each of the
 
 
 \subsection{Influence of the cutoff frequency}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{.8\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{results/resolution/simulated/angle error}
+         \caption{Simulated images}
+    \end{subfigure}\\
+    \vspace{2em}
+    \begin{subfigure}[b]{.8\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{results/resolution/experimental/angle error}
+         \caption{Experimental images}
+    \end{subfigure}
+    \caption{Angle accuracy in terms of the alignment resolution limit}
+    \label{fig:5:resolution_angle_accuracy}
+\end{figure}
 
-\subsection{Combined influence of considered factors}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{.8\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{results/resolution/simulated/shift error}
+         \caption{Simulated images}
+    \end{subfigure}\\
+    \vspace{2em}
+    \begin{subfigure}[b]{.8\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{results/resolution/experimental/shift error}
+         \caption{Experimental images}
+    \end{subfigure}
+    \caption{Shift accuracy in terms of the alignment resolution limit}
+    \label{fig:5:resolution_shift_accuracy}
+\end{figure}
 
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{.8\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{results/resolution/simulated/resolution}
+         \caption{Simulated images}
+    \end{subfigure}\\
+    \vspace{2em}
+    \begin{subfigure}[b]{.8\textwidth}
+         \centering
+         \includegraphics[width=\linewidth]{results/resolution/experimental/resolution}
+         \caption{Experimental images}
+    \end{subfigure}
+    \caption{Reconstruction resolution in terms of the alignment resolution limit}
+    \label{fig:5:resolution_resolution}
+\end{figure}
 
 \end{document}
