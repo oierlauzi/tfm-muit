@@ -17,7 +17,7 @@ To address the fact that the alignment information of the experimental images is
 
 Atomic models describe the the protein structure with atom coordinates. Therefore, the first step is to render a volume from this model. This can be easily achieved using the \texttt{xmipp3 - convert a PDB} protocol. Then, this volume is projected from all directions using \texttt{xmipp3 - create gallery} protocol, leading to a set of clean projections of the volume. However, these projections do not reflect experimental images due to the absence of noise. Therefore, some amount of \gls{agwn} is added to the images through the \texttt{xmipp3 - add noise particles} protocol to simulate ice particles in the sample. This noise has zero mean and its standard deviation will be selected in such a way that the \gls{snr} of the image is $-10 \si{\decibel}$. Lastly, a \gls{ctf} is applied to the images using \texttt{xmipp3 - simulate CTF} protocol. 
 
-In total, $41219$ projections will be generated from equally spaced orientations. This ensures that the algorithm will be tested with all possible orientations of the protein. Additionally, the particles will be shifted in-plane by a normal distribution of $\sigma=6\si{px}$. Therefore, $95\si{\percent}$ of the images will contain a shift of less than $12 \si{px}$, which is a reasonably high value. Similarly, the defocus parameter of the \gls{ctf} will be uniformly chosen for each particle in the range of $5000 \si{\angstrom}$ to $25000 \si{\angstrom}$.
+In total, $41219$ projections will be generated from equally spaced orientations. This ensures that the algorithm will be tested with all possible orientations of the protein. Additionally, the particles will be shifted in-plane by a normal distribution of $\sigma=6\si{px}$. Therefore, $95\si{\percent}$ of the images will contain a shift of less than $12 \si{px}$, which is a reasonably high value. Similarly, the defocus parameter of the \gls{ctf} will be uniformly chosen for each particle in the range of $5000 \si{\angstrom}$ to $25000 \si{\angstrom}$ (typical \gls{ctf} defocus values).
 
 
 \subsection{Test proteins}
@@ -41,9 +41,9 @@ This acquisition is related to the Plasmodium falciparum protein, which is prese
     \label{fig:5:empiar10028}
 \end{figure}
 
-Parts of this protein are very flexible. This makes particles difficult to align, as the particles can not be fitted properly to the entire volume at once. Moreover the protein is quite large, requiring particle images to be also large ($300 \si{px}$ wide).
+Parts of this protein are very flexible. This makes particles difficult to align, as the particles can not be fitted properly to the entire volume at once. Moreover, the protein is quite large, requiring particle images to be also large ($300 \si{px}$ wide).
 
-As stated earlier, alignment algorithms use particles and a volume as the starting point. Although individual particles are provided in the dataset, these particles were obtained several years ago. Therefore, we preferred to obtain the particles from scratch using modern methods so that we can take advantage of state-of-the-art algorithms.
+As stated earlier, alignment algorithms use particles and a volume as the starting point. Although individual particles are provided in the dataset, these particles were obtained several years ago. Thus, we preferred to obtain the particles from scratch using modern methods so that we can take advantage of state-of-the-art algorithms.
 
 After performing the angular assignment consensus between two independent Relion refinements, $60210$ experimental particles were left with a discrepancy lower than $1 \si{\degree}$ in the angular assignment and $0.5 \si{px}$ in the shift assignment. These refinements reached a resolution of $4.06 \si{\angstrom}$ in their final volumes. The reconstructed volume can be observed in Figure \ref{fig:5:empiar10028_rec}. We also followed this procedure with Cryosparc (Homogeneous and Non-Uniform refinements) but we were unable to obtain good results.
 
@@ -76,7 +76,7 @@ The \gls{empiar}-10061 dataset is an acquisition of the $\beta$-galactosidase pr
 
 The particularity of this dataset is that it has $D2$ symmetry. This is important when aligning, because it reduces the number of possible projection angles. Moreover, each experimental image can be used to fill multiple planes in Fourier space when reconstructing, which usually increases \gls{snr} and resolution.
 
-Contrary to the previous example, Relion's refinement introduced some artefacts. Therefore, Cryosparc's result was used for reference. The refinement reached a resolution of $2.6 \si{\angstrom}$, which is close to the theoretical resolution limit imposed by Nyquist. After consensuating two independent Cryosparc runs, $39682$ particles were kept with a discrepancy lower than $0.2 \si{px}$ in shift assignment and $0.5 \si{\degree}$ in angular assignment. The resulting reconstructed volume can be observed in Figure \ref{fig:5:empiar10061_rec}.
+Contrary to the previous example, Relion's refinement introduced some artefacts. Therefore, Cryosparc's result was used for reference. The refinement reached a resolution of $2.6 \si{\angstrom}$, which is close to the theoretical resolution limit imposed by Nyquist for its pixel size. After consensuating two independent Cryosparc runs, $39682$ particles were kept with a discrepancy lower than $0.2 \si{px}$ in shift assignment and $0.5 \si{\degree}$ in angular assignment. The resulting reconstructed volume can be observed in Figure \ref{fig:5:empiar10061_rec}.
 
 \begin{figure}[htbp]
     \centering

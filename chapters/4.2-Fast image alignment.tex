@@ -229,7 +229,18 @@ Once the database has been trained, vectors are grouped according to their close
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=.8\textwidth]{implementation/ivf/kmeans}
+    \begin{subfigure}[b]{.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{implementation/ivf/kmeans/kmeans}
+         \caption{K-means clustering}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{implementation/ivf/kmeans/residuals}
+         \caption{Residual vectors}
+    \end{subfigure}
+    %\includegraphics[width=.8\textwidth]{implementation/ivf/kmeans}
     \caption{K-means centroid and residual vector example for IVF searches}
     \label{fig:4:ivf_kmeans}
 \end{figure}
@@ -238,7 +249,7 @@ When a search needs to be carried out, the query vector will also be assigned to
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=.8\textwidth]{implementation/ivf/search}
+    \includegraphics[width=.75\textwidth]{implementation/ivf/search}
     \caption{IVF search example}
     \label{fig:4:ivf_search}
 \end{figure}
