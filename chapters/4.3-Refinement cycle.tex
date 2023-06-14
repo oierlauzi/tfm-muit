@@ -13,7 +13,7 @@ The first step in the alignment process is to generate a projection gallery of t
 
 This sampling directly affects the quality of the results, as the angular assignment of the images will be quantised to this interval. Ideally, the quantisation error has a uniform distribution $\mathcal{U}(-\frac{\Delta\Phi}{2}, +\frac{\Delta\Phi}{2})$. Therefore, in the best case scenario, the absolute error will have an average value of $\frac{\Delta\Phi}{4}$, where $\Delta\Phi$ is the angular sampling rate. This suggests that the angular assignment error is directly proportional to the angular sampling rate. However, there is another limiting factor to the accuracy, the resolution. 
 
-Recalling the alignment algorithm, it was stated that the image comparisons are only performed up to a certain resolution. This resolution is determined by the resolution of the reference map, as it does not make sense to compare coefficients beyond the maximum resolution of the map. The Fourier Rotation theorem states that the rotations in the spatial domain corresponds to the same rotation in Fourier space. Note that we are dealing with discrete Fourier space, which has discrete frequency components.  Hence, at most we are only able to detect a rotation that would shift a coefficients at the resolution limit. This is illustrated in Figure \ref{fig:4:resolution_limit}.
+Recalling the alignment algorithm, it was stated that the image comparisons are only performed up to a certain resolution. This resolution is determined by the resolution of the reference map, as it does not make sense to compare coefficients beyond the maximum resolution of the map. The Fourier Rotation theorem states that the rotations in the spatial domain corresponds to the same rotation in Fourier space. Note that we are dealing with discrete Fourier space, which has discrete frequency components.  Hence, at most we are only able to detect a rotation that would shift a coefficients at the resolution limit. This minimally measurable angle is the same for both 2D and 3D cases. The former one is illustrated in Figure \ref{fig:4:resolution_limit}. 
 
 \begin{figure}
     \centering
@@ -83,7 +83,7 @@ Note that the previous example was provided with 3 repetitions for consensus. Ne
 \begin{itemize}
     \item The angular assignment is validated by calculating the average angular assignment of the runs. Then, the distance from this average to the samples is computed. The angular assignment is considered to be valid only if more than the $50 \si{\percent}$ of alignments are closer than the angular sampling rate ($\Delta\Phi$). If so, this average angular assignment is used for reconstruction.
 
-    The averaging of angular assignments must be done in quaternion space. Contrary to this, the alignment parameters are usually represented with Euler angles. Hence, the Euler angles of the alignment need to be converted to quaternions:
+    The averaging of angular assignments must be done in quaternion space. Quaternions are an extension to the complex number system which are useful for representing the orientation in 3D space. Contrary to the Euler angles, which are more intuitive, quaternions are not subjected to the gimbal lock issue, making operations easier. In spite of this, the alignment parameters are usually represented with Euler angles. Hence, the Euler angles of the alignment need to be converted to quaternions.
 
     \begin{equation}
     \begin{split}
@@ -155,10 +155,10 @@ At this point the alignment particles are split into two equally sized random su
 \subsection{Resolution estimation and post processing}
 The final step involves comparing both half-maps to determine the resolution of the map. Since particles are aligned independently, each half-map was obtained separately. Consequently, regions that show strong correlation in both maps can be attributed to the signal, while uncorrelated regions are considered as noise.
 
-The correlation between the Fourier coefficients for each frequency is measured using the \gls{fsc} function, which is described in Chapter \ref{chap:state_of_the_art}. This function provides a correlation function in terms of spatial frequency.
+The correlation between the Fourier coefficients for each frequency is measured using the \gls{fsc} function, which was described in Chapter \ref{chap:state_of_the_art}. This function provides a correlation function in terms of spatial frequency.
 
 Typically, the \gls{fsc} function exhibits a low-pass behaviour. The frequency at which this function crosses a specific threshold (usually $0.5$ or $0.143$) indicates the resolution of the map. This resolution represents the level of detail that can be reliably represented in the volume.
 
-Once the map's resolution is determined, both half-maps are averaged and then subjected to low-pass filtering up to the previously obtained resolution. This filtering step is performed to prevent overfitting caused by noise. The resulting filtered average volume can be used as the reference volume for the next iteration or as the final output volume.
+Once the map's resolution is determined, both half-maps are averaged and then subjected to low-pass filtering up to the previously obtained resolution. This filtering step is performed to prevent overfitting caused by noise, as it effectively reduces the number of parameters to be estimated\cite{scheres2012}. The resulting filtered average volume can be used as the reference volume for the next iteration or as the final output volume.
 
 \end{document}

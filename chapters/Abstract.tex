@@ -2,12 +2,14 @@
 
 \begin{document}
 
-\gls{cryoem} has revolutionised the field of structural biology by enabling the visualisation of macromolecular structures such as proteins at unprecedented resolutions. Image alignment is a core problem in \gls{cryoem}, as it is utilised by numerous steps of a typical \gls{cryoem} image processing workflow. 
-
-The alignment problem involves finding the optimal translational and rotational transformations that align an image to a set of reference images. Thus, the vast amount of image comparisons required to solve the problem renders it a computationally expensive process. For this reason, a significant amount of time spent in \gls{cryoem} image processing is dedicated to image alignment. Similarly, the quality of the final results is heavily influenced by the accuracy of the alignments.
+\gls{cryoem} has revolutionised the field of structural biology by enabling the visualisation of macromolecular structures such as proteins at unprecedented resolutions. However, efficient and accurate image alignment remains a computational challenge in \gls{cryoem} image processing, as it is used in numerous steps. The alignment problem involves finding the optimal translational and rotational transformations that align an image to a set of reference images. Thus, the vast amount of image comparisons required to solve the problem renders it a computationally expensive process. For this reason, a significant amount of time spent in \gls{cryoem} image processing is dedicated to image alignment. Similarly, the quality of the final results is heavily influenced by the accuracy of the alignments.
 
 This project introduces a new alignment method aiming perform alignments much faster than state-of-the-art techniques at little to no accuracy degradation. To do so, novel vector compression techniques will be used when storing and comparing images. These techniques can be used to efficiently compute similarity measures between the images, facilitating the identification of the optimal alignment parameters. Moreover they require less memory footprint, allowing to store more images in memory.
 
-Extensive experimental evaluations were conducted on publicly available datasets to validate the performance of the proposed algorithm. Comparative analysis against existing state-of-the-art methods demonstrated that the algorithm achieved comparable accuracy while significantly reducing computational time and memory usage.
+Another novel approach of this work is the usage of alignment consensus, where multiple non-deterministic alignments are combined to enhance the accuracy of the result. This enhances the reliability of subsequent local alignments, as these are heavily biased by the initial solution.  
+
+The algorithm has been extensively tested with a wide variety of proteins and parameters, leading to empirically solid results. These results demonstrate the algorithm's ability to enhance throughput in \gls{cryoem} image processing while maintaining acceptable accuracy levels, particularly for low resolution alignments. However, limitations in accuracy were observed when applying the algorithm to higher resolution targets.
+
+Nevertheless, it provides a fast and accurate way to solve the first iterations of a refinement process, which typically involve expensive global alignments. Therefore, the algorithm's performance can significantly contribute to increase the throughput in these first few iterations of a refinement, allowing researchers to obtain preliminary results much faster. Additionally, the consensus provides subsequent local iterations with high quality data, diminishing the chances of falling into local minimas and thus improving the final results.
 
 \end{document}

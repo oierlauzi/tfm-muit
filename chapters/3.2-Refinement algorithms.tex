@@ -19,7 +19,7 @@ The projection gallery represents a set of projections of the current volume fro
 
 In rough terms, \glspl{tem} fire a electron beam through the sample and capture the ``shadow'' of its Coulomb potential density\cite{sorzano2022}. In other words, areas where the beam encounters electrons will appear dim. This process is illustrated in the Figure \ref{fig:2:projection_reconstruction:acquisition}. Nevertheless images are usually complemented so that bright areas relate to the presence of matter.
 
-This behaviour is mathematically known as the X-Ray transform, which is a particularisation to 3 dimensions of the Radon's transform. As described in \eqref{eq:3:projection}, this transform consists in computing the integral across a set of parallel lines normal to the projection plane. The volume is represented by the function $V(\bm{\tilde{r}}): \mathbb{R}^3 \rightarrow \mathbb{R}$ and the projected image is represented by the function $I_{\tilde{A}}(\bm{\tilde{s}}): \mathbb{R}^2 \rightarrow \mathbb{R}$. Both $\bm{\tilde{s}} = (s_x, s_y, 1)$ and $\bm{\tilde{r}} = (r_x, r_y, r_z, 1)$ are homogeneous coordinates\cite{sorzano2017b}.
+This behaviour is mathematically described with the expression \eqref{eq:3:projection}, which consists in computing the integral across a set of parallel lines normal to the projection plane. The volume is represented by the function $V(\bm{\tilde{r}}): \mathbb{R}^3 \rightarrow \mathbb{R}$ and the projected image is represented by the function $I_{\tilde{A}}(\bm{\tilde{s}}): \mathbb{R}^2 \rightarrow \mathbb{R}$. Both $\bm{\tilde{s}} = (s_x, s_y, 1)$ and $\bm{\tilde{r}} = (r_x, r_y, r_z, 1)$ are homogeneous coordinates\cite{sorzano2017b}. Homogeneous coordinates allow to introduce a shift to the projection, so that the particle can be off-centred.
 
 \begin{equation}\label{eq:3:projection}
     I_{\tilde{A}}(\bm{\tilde{s}}) =
@@ -41,7 +41,7 @@ where $\tilde{H}^T$ is the projection matrix defined as in \eqref{eq:3:projectio
     (s_x, s_y, t, 1)
 \end{equation}
 
-$\tilde{A}$ encodes the projection direction using the 3D rotation matrix $R$ and in-plane shift $\bm{\delta} = (\delta_x, \delta_y, 0)$ in an affine matrix defined in \eqref{eq:3:projection_pose}. Due to the fact that the rotation matrix is orthonormal, its inverse matrix can be easily computed.
+$\tilde{A}$ encodes the projection direction using the 3D rotation matrix $R$ and in-plane shift $\bm{\delta} = (\delta_x, \delta_y, 0)$ in an affine matrix defined in \eqref{eq:3:projection_pose}. Due to the fact that the rotation matrix $R$ is orthonormal, its inverse matrix can be easily computed by transposing ($R^T = R^{-1}$).
 
 \begin{equation}\label{eq:3:projection_pose}
     \tilde{A} = 
@@ -64,13 +64,13 @@ Note that when using this approach, only one 3D \gls{fft} is computed, and then 
 Using the previous notation, the projection operation in Fourier Space is expressed in \eqref{eq:3:projection_fourier}. The volume and image functions now define Fourier space, so that they are complex functions $\hat{V}(\bm{\tilde{R}}): \mathbb{R}^3 \rightarrow \mathbb{C}$ and $\hat{I}_{\tilde{A}}(\bm{\tilde{S}}): \mathbb{R}^2 \rightarrow \mathbb{C}$. Moreover, the $\bm{\tilde{s}}$ and $\bm{\tilde{r}}$ spatial variables have been substituted by the frequency vectors $\bm{\tilde{S}}$ and $\bm{\tilde{R}}$, respectively\cite{sorzano2017b}.
 
 \begin{equation}\label{eq:3:projection_fourier}
-    \hat{I}_{\tilde{A}}(\bm{\tilde{S}}) = e^{-j\langle R\bm{\delta, \bm{\tilde{S}}}\rangle}\hat{V}(\tilde{A}'^{-1}\bm{\tilde{S}})
+    \hat{I}_{\tilde{A}}(\bm{\tilde{S}}) = e^{-j\langle R\bm{\delta, \bm{\tilde{S}}}\rangle}\hat{V}(\tilde{A}_F^{-1}\bm{\tilde{S}})
 \end{equation}
 
 where 
 
 \begin{equation}\label{eq:3:projection_fourier_pose}
-    \tilde{A}' = R \Leftrightarrow \tilde{A}'^{-1} = R^T
+    \tilde{A}_F = R \Leftrightarrow \tilde{A}_F^{-1} = R^T
 \end{equation}
 
 \subsection{Projection matching and angular assignment}
@@ -148,6 +148,7 @@ There are two approaches used when filling 3D Fourier space with 2D slices: Scat
     \label{fig:3:gather_scatter}
 \end{figure}
 
+The main benefit of the scatter approach is that it can be executed in $O(n^2)$, as it loops over the Fourier coefficients of an image. Contrary to this, a naive implementation of the gather approach would loop over all Fourier coefficients of a volume, requiring $O(n^3)$ time\cite{strelak2019}. However, there are heuristic methods that allow exploring only a subset of the 3D Fourier space, effectively achieving $O(n^2)$ time complexity for the gather approach. Moreover, this approach is more suitable for paralellisation, as it avoids race conditions. Indeed, this is the approach used in Xmipp\cite{strelak2019}. 
 
 \subsection{Multi-reference refinement}
 The refinement algorithms rely on the assumption that all input particles belong to the same structure. However, this is not always true, as the dataset might be heterogeneous. This heterogeneity can be either discrete or continuous. 

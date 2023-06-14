@@ -13,7 +13,7 @@ When comparing experimental images to reference ones, the \gls{ctf} must be take
 
 A possible solution to this problem consists in clustering similar \glspl{ctf} into a reduced amount of discrete groups, so that for a given group, the \gls{ctf} is only applied once to the reference gallery. However, this procedure adds complexity to the algorithm, specially considering that in streaming only a reduced subset of the data is available at a given time. Moreover, some datasets have a wide range of unique \glspl{ctf}, which implies that a lot of small clusters would be generated, cancelling all the benefits of this approach.
 
-This algorithm addresses this issue by correcting experimental images with a Wiener inverse filter. As shown in the figure \ref{fig:4:wiener}, the comparisons are made with the clean reference images, so the gallery does not need to be modified across comparisons.
+This algorithm addresses this issue by correcting experimental images with a Wiener filter. As shown in the figure \ref{fig:4:wiener}, the comparisons are made with the clean reference images, so the gallery does not need to be modified across comparisons.
 
 \begin{figure}[htbp]
     \centering
@@ -30,12 +30,12 @@ This algorithm addresses this issue by correcting experimental images with a Wie
          \caption{Wiener correction}
          \label{fig:4:wiener:wiener}
     \end{subfigure}\\
-    Where $C$ is the \gls{ctf}, $\tilde{C}$ is the \gls{ctf} estimation and $\tilde{C}^{-1}$ is the Wiener filter for correcting the estimated \gls{ctf}.
+    Where $C$ is the \gls{ctf}, $\tilde{C}$ is the \gls{ctf} estimation and $W$ is the Wiener filter for correcting the estimated \gls{ctf}.
     \caption{CTF correction approaches}
     \label{fig:4:wiener}
 \end{figure}
 
-Among other applications, the Wiener filter can be used to deduce the inverse filter for a \gls{lti} system, as is the case of the \gls{ctf} model. This process is also known as the Wiener deconvolution. The definition of the Wiener inverse filter is displayed at \eqref{eq:4:wiener}, which also expresses it in function of the \gls{ssnr}. Note that in absence of noise (infinite \gls{ssnr}), the filter tends to behave as the inverse filter\cite{wetzstein2018}. The term $N(f)/S(f)$ is usually refereed as the Wiener constant, which prevents overamplification when the direct filter's gain is low. Note that the $S(f)$ terms refers to the signal \gls{psd} before the direct filter, whilst the $N(f)$ term refers to the noise \gls{psd} after the filter. This signals are represented in the block diagram of Figure \ref{fig:4:wiener_block}.
+Among other applications, the Wiener filter can be used to deduce the inverse filter for a \gls{lti} system, as is the case of the \gls{ctf} model. This process is also known as the Wiener deconvolution, where the filter is obtained in such a way that the \gls{mse} of the output is minimized\cite{ronda2022}. The definition of the Wiener filter is displayed at \eqref{eq:4:wiener}, which also expresses it in function of the \gls{ssnr}. Note that in absence of noise (infinite \gls{ssnr}), the filter tends to behave as the inverse filter\cite{wetzstein2018}. The term $N'(f)/S(f)$ acts  to prevent overamplification when the direct filter's gain is low. 
 
 \begin{equation}\label{eq:4:wiener}
 \begin{split}
@@ -45,6 +45,8 @@ Among other applications, the Wiener filter can be used to deduce the inverse fi
     \frac{1}{H(f)} \cdot \frac{\frac{S(f)}{N'(f)} \cdot \left\vert H(f) \right\vert^2}{\frac{S(f)}{N'(f)} \cdot \left\vert H(f) \right\vert^2 + 1}
 \end{split}
 \end{equation}
+
+where the $S(f)$ term refers to the signal \gls{psd} before the direct filter, whilst the $N'(f)$ term refers to the noise \gls{psd} after the filter\cite{ronda2022}. These signals are represented in the block diagram of Figure \ref{fig:4:wiener_block}.
 
 \begin{figure}[htbp]
     \centering
@@ -58,7 +60,7 @@ The Wiener filter was already implemented in Xmipp\cite{sorzano2004} as \texttt{
 The main drawback of this approach is that the Wiener filter is not able to correct frequencies where the direct filter has a zero. As shown in \eqref{eq:4:wiener_zero}, the Wiener inverse filter has also a zero for those frequencies, hence, those frequencies will not be at its output. In addition, the Figure \ref{fig:2:ctf} points out that the \gls{ctf} has periodic zero crossings, which will be subjected to this phenomenon.
 
 \begin{equation}\label{eq:4:wiener_zero}
-    \lim_{\left\vert H(f) \right\vert \rightarrow 0} \hat{H}^{-1}(f) = 0
+    \lim_{\left\vert H(f) \right\vert \rightarrow 0} W(f) = 0
 \end{equation} 
 
 As a consequence, some spatial frequencies are not present in the experimental image to be compared, but they are potentially present in the artificially generated image. This will induce a systematic error when comparing images. However, according to the experiments detailed later, we have not observed any significant influence of this effect. 
@@ -81,7 +83,7 @@ The Figure \ref{fig:4:downsampling} illustrates this Fourier coefficient extract
 
 We have observed slightly more accurate results when using the \gls{dct} instead of the \gls{dft} for a given disc size. However, the cost of computing the \gls{dct} is also greater.
 
-As a consequence, we will select a low frequency disc in Fourier space to transform all images into a search vector. As shown in the previous example, the images can be reduced by a factor of $5$ at little accuracy cost. In the results chapter, we will discuss the accuracy loss that can be attributed to discarding high frequency information.
+As a consequence, we will select a low frequency disc in Fourier space to transform all images into a search vector. As shown in the previous example, the images can be reduced by a factor of $\frac{25600}{5024} \approx 5$ at little accuracy cost. In the results chapter, we will discuss the accuracy loss that can be attributed to discarding high frequency information.
 
 \subsection{Reference dataset generation}
 The reference dataset consists in all the in-plane transformations of the reference images. This implementation groups alignment parameters in such a way that intermediary images can be stored and used repeatedly, avoiding redundant computations. Moreover, the individual operations have been reduced to the bare-minimum, so that their execution time is minimised.
@@ -114,7 +116,7 @@ Therefore, we have chosen to use FAISS's vector quantisation and compression tec
 
 One of the most widely known vector compression techniques is \gls{pca}. \Gls{pca} can be used to project vectors into a subspace in such a way that the energy lost during the projection is minimal. This projection reduces the dimensionality of the vectors, so more of them can be stored at a given space. Moreover, vector comparisons become more efficient as less components need to be compared.
 
-We have also considered using the database architecture recommended by FAISS guidelines\cite{johnson2019} that best represents the magnitudes of our data estimates. This architecture uses the \gls{pq} vector compression technique to achieve aforementioned compression ratios. On top of it, it uses a \gls{ivf} data structure to accelerate searches. We have also selected these techniques because they have been implemented for \glspl{gpu}, so that the whole search process can be run in these accelerators. A brief description of these techniques is provided hereafter.
+We have also considered using the database architecture recommended by FAISS guidelines\cite{johnson2019} that best represents the magnitudes of our data estimates. This architecture uses the \gls{pq} vector compression technique to achieve aforementioned compression ratios. On top of it, it uses a \gls{ivf} data structure to accelerate searches. We have also selected these techniques because they have been implemented for \glspl{gpu}, so that the whole search process can be run in these accelerators. Although these techniques have been already implemented in FAISS, a brief description of them is provided hereafter.
 
 \subsubsection{Principal Component Analysis}
 \Gls{pca} is a family of techniques to reduce the dimensionality of vectors in such a way that the information lost in the process is minimised\cite{shalizi2012}. This is achieved with a linear projection of the vectors into a latent space. The basis vectors of this latent space correspond to the axes of the input data where the variance is maximal. For instance, Figure \ref{fig:4:pca} shows the axis with maximum variance of a set of 2D points.
@@ -255,7 +257,7 @@ When a search needs to be carried out, the query vector will also be assigned to
 \end{figure}
 
 \subsubsection{Distance metric}
-Until this point we have used the distance term without defining a concrete distance function. This was to preserve generality, as several distance functions were implemented. The aforementioned \gls{ivf}-\gls{pq} encoding only allows for Euclidean distance minimisation and dot product maximisation. In fact, these metrics are related to one another:
+Until this point we have used the distance term without defining a concrete distance function. This was to preserve generality, as several distance functions were implemented. The aforementioned FAISS implementation of \gls{ivf}-\gls{pq} encoding only allows for Euclidean distance minimisation and dot product maximisation. In fact, these metrics are related to one another:
 
 \begin{equation}\label{eq:4:dot_l2}
     \left\lVert \bm{x} - \bm{y} \right\rVert^2 =
