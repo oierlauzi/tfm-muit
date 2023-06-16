@@ -38,7 +38,7 @@ Knowing that $\Omega_{max} = 2 \pi \frac{T_s}{T_{max}}$ where $T_s$ is the pixel
 
 In order to avoid repeatedly sampling in the same directions, a random perturbation is added to the projection directions. Empirical results have shown that a value of $\frac{\Delta\Phi}{4}$ offers good results. This value coincides with the average error of the quantisation.
 
-Once the projection parameters are chosen, the volume is projected from quasi-equally spaced angles using the \texttt{xmipp\_angular\_project\_library} program. This will produce our reference gallery. Prior to this projection, a mask may be applied to the reference volume, so that the alignment is focused on a particular \gls{roi}. 
+Once the projection parameters are chosen, the volume is projected from quasi-equally spaced angles using the \texttt{xmipp\_angular\_project\_library} program, which was already implemented in Xmipp. This will produce our reference gallery. Prior to this projection, a mask may be applied to the reference volume, so that the alignment is focused on a particular \gls{roi}. 
 
 Additionally, if multiple reference volumes are provided for 3D classification, this step is repeated for each volume. Then all the galleries are combined into a single one, keeping track of the class that each reference image belongs to. in this way, the alignment will not only determine the angular assignment but also the 3D class.
 
@@ -150,7 +150,7 @@ Note that the previous example was provided with 3 repetitions for consensus. Ne
 \end{itemize}
 
 \subsection{Reconstruction}
-At this point the alignment particles are split into two equally sized random subsets. This is done in order to be able to compute the \gls{fsc} between two reconstructions in the next step. Each of these subsets is used to reconstruct a volume using the \texttt{xmipp\_reconstruct\_fourier} program (or its \gls{gpu} accelerated variant). As the name of the program suggests, the reconstruction is performed using the Fourier back-projection algorithm, detailed in Chapter \ref{chap:state_of_the_art}. Each of these volumes is known as \textit{half-map}, because they were obtained from half of the particles.
+At this point the alignment particles are split into two equally sized random subsets. This is done in order to be able to compute the \gls{fsc} between two reconstructions in the next step. Each of these subsets is used to reconstruct a volume using \texttt{xmipp\_reconstruct\_fourier} program (or its \gls{gpu} accelerated variant\cite{strelak2019}), which has been already implemented in Xmipp. As the name of the program suggests, the reconstruction is performed using the Fourier back-projection algorithm, detailed in Chapter \ref{chap:state_of_the_art}. Each of these volumes is known as \textit{half-map}, because they were obtained from half of the particles.
 
 \subsection{Resolution estimation and post processing}
 The final step involves comparing both half-maps to determine the resolution of the map. Since particles are aligned independently, each half-map was obtained separately. Consequently, regions that show strong correlation in both maps can be attributed to the signal, while uncorrelated regions are considered as noise.
