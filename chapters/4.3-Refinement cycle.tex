@@ -157,7 +157,7 @@ The final step involves comparing both half-maps to determine the resolution of 
 
 The correlation between the Fourier coefficients for each frequency is measured using the \gls{fsc} function, which was described in Chapter \ref{chap:state_of_the_art}. This function provides a correlation function in terms of spatial frequency.
 
-Typically, the \gls{fsc} function exhibits a low-pass behaviour. The frequency at which this function crosses a specific threshold (usually $0.5$ or $0.143$) indicates the resolution of the map. This resolution represents the level of detail that can be reliably represented in the volume.
+Typically, the \gls{fsc} function exhibits a low-pass behaviour. The frequency at which this function crosses a specific threshold (usually $0.5$ or $0.143$) indicates the resolution of the map. This number provides an insight about the level of detail that can be reliably represented in the volume.
 
 Once the map's resolution is determined, both half-maps are averaged and then subjected to low-pass filtering up to the previously obtained resolution. This filtering step is performed to prevent overfitting caused by noise, as it effectively reduces the number of parameters to be estimated\cite{scheres2012}. The resulting filtered average volume can be used as the reference volume for the next iteration or as the final output volume.
 
